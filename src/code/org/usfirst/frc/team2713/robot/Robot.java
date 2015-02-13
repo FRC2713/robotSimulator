@@ -1,5 +1,11 @@
 package code.org.usfirst.frc.team2713.robot;
 
+import java.awt.Image;
+
+import code.org.usfirst.frc.team2713.robot.commands.commandBase;
+import code.org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
+import api.iterativerobot.*;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as described in the IterativeRobot documentation. If you change the name of this class or
  * the package after creating this project, you must also update the manifest file in the resource directory.
