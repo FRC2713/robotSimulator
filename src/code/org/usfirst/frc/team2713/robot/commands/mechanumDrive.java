@@ -1,5 +1,6 @@
 package code.org.usfirst.frc.team2713.robot.commands;
 
+import code.org.usfirst.frc.team2713.robot.OI;
 import api.Prefrences.Preferences;
 
 public class mechanumDrive extends commandBase{
@@ -13,8 +14,7 @@ public class mechanumDrive extends commandBase{
 		prefs = Preferences.getInstance();
 	}
 	
-	protected void execute() {
-
+	public void execute() {
 		SCALER = prefs.getDouble("SCALER", 0.6);
 		DEADBAND = prefs.getDouble("DEADBAND",0.1);
 		POLARITY = -1;

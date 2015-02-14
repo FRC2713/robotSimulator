@@ -36,12 +36,12 @@ public class commandBase extends Command {
 
 	}
 
-	protected void execute() {
+	public void execute() {
 
 	}
 
 	@Override
-	protected boolean isFinished() {
+	public boolean isFinished() {
 		// TODO Auto-generated method stub
 		return false;
 	}

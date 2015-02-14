@@ -18,7 +18,7 @@ public class goForward extends commandBase{
         time.start();
     }
 	
-	protected void execute() {
+	public void execute() {
 		drive.move(.7);
 	}
 

@@ -12,12 +12,17 @@ public class Encoder {
 	}
 	
 	public double getDistance() {
-		if()
 		return Double.parseDouble(mainClass.thisBoard.encoders[portNum].getText());
 	}
 	
 	public void setDistancePerPulse(double distance) {
 		
 	}
+
+	public void reset() {
+		mainClass.thisBoard.encoders[portNum].reset();
+		
+	}
+
 	
 }

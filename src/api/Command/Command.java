@@ -16,7 +16,7 @@ public class Command extends Thread {
 		}
 	}
 	
-	protected boolean isFinished() { 
+	public boolean isFinished() { 
 		return false;
 	}
 	

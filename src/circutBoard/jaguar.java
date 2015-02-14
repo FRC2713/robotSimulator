@@ -28,6 +28,7 @@ public class jaguar extends JPanel {
 	
 	public void setSpeed(double speed1) {
 		speed = speed1;
+		repaint();
 	}
 	
 }

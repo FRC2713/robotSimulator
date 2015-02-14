@@ -15,11 +15,11 @@ public class closeOrOpenGrabber extends commandBase{
 		direction = direction1;
 	}
 	
-	protected void execute() {
+	public void execute() {
 		grab.setLift(direction);
 	}
 	
-	protected boolean isFinished() {
+	public boolean isFinished() {
 		if (grab.armClosed.get() && direction > 0) {
 			return true;
 		}
