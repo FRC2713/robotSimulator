@@ -4,6 +4,8 @@
  */
 package code.org.usfirst.frc.team2713.robot.inputs;
 
+import api.inputs.Joystick;
+
 /**
  *
  * @author Finn
@@ -31,7 +33,7 @@ public class XBoxController extends Joystick {
     }
     
     public double getTriggerAxis() {
-        return getRawAxis(3);
+        return getRawAxis(12);
     }
     
     public double getDpadX() {

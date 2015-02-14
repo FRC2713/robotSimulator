@@ -1,5 +1,10 @@
 package code.org.usfirst.frc.team2713.robot.commands;
 
+import code.org.usfirst.frc.team2713.robot.subsystems.DriveSubsystem;
+import code.org.usfirst.frc.team2713.robot.subsystems.GrabberSubsystem;
+import code.org.usfirst.frc.team2713.robot.subsystems.LiftSubsystem;
+import api.Command.Command;
+
 public class commandBase extends Command {
 	public static DriveSubsystem drive;
 	public static LiftSubsystem lift;
@@ -17,6 +22,7 @@ public class commandBase extends Command {
 			drive = new DriveSubsystem();
 		}
 		drive.initMechanumDrive();
+
 	}
 
 	public void initGrab() {
@@ -42,12 +48,6 @@ public class commandBase extends Command {
 
 	@Override
 	protected void end() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void interrupted() {
 		// TODO Auto-generated method stub
 
 	}

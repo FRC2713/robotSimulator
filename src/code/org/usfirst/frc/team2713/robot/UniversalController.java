@@ -1,5 +1,8 @@
 package code.org.usfirst.frc.team2713.robot;
 
+import api.SpeedControllers.*;
+import api.Exceptions.AllocationException;
+
 public class UniversalController {
 	CANJaguar thisJaguar;
 	Talon thisTalon;

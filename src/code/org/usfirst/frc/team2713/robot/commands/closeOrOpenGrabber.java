@@ -1,5 +1,7 @@
 package code.org.usfirst.frc.team2713.robot.commands;
 
+import code.org.usfirst.frc.team2713.robot.RobotMap;
+import api.Sensors.*;
 
 public class closeOrOpenGrabber extends commandBase{
 

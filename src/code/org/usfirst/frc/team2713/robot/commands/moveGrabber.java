@@ -1,5 +1,7 @@
 package code.org.usfirst.frc.team2713.robot.commands;
 
+import code.org.usfirst.frc.team2713.robot.OI;
+
 public class moveGrabber extends commandBase {
 
 	Boolean inOrOut;
@@ -19,6 +21,8 @@ public class moveGrabber extends commandBase {
 			triggerPolarity = 0;
 			inOrOut = null;
 		}
+		System.out.println(OI.xbox.getTriggerAxis());
+		System.out.println(OI.xbox.getZ());
 	}
 
 	public moveGrabber() {
@@ -30,7 +34,6 @@ public class moveGrabber extends commandBase {
 	}
 
 	protected void execute() {
-		System.out.println("Running");
 		triggerPolarity = OI.xbox.getTriggerAxis();
 		getTiggerPolarity();
 		if (inOrOut != null && inOrOut == true && grab.armClosed.get()) {
@@ -47,10 +50,6 @@ public class moveGrabber extends commandBase {
 	}
 
 	protected void end() {
-
-	}
-
-	protected void interrupted() {
 
 	}
 

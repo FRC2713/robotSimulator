@@ -1,5 +1,12 @@
 package code.org.usfirst.frc.team2713.robot.subsystems;
 
+import api.Sensors.DigitalInput;
+import api.Subsystem.Subsystem;
+import api.SpeedControllers.*;
+import code.org.usfirst.frc.team2713.robot.RobotMap;
+import code.org.usfirst.frc.team2713.robot.UniversalController;
+import code.org.usfirst.frc.team2713.robot.commands.moveGrabber;
+
 public class GrabberSubsystem extends Subsystem {
 
 	public UniversalController grab;
@@ -29,11 +36,11 @@ public class GrabberSubsystem extends Subsystem {
 	}
 
 	public double getAmps() {
-		return ((CANJaguar) grab.getProperController()).getBusVoltage();
+		return  ((CANJaguar) grab.getProperController()).getBusVoltage();
 	}
 
 	public double getRaw() {
-		return ((Talon) grab.getProperController()).getRaw();
+		return ((Talon) grab.getProperController()).getRAW();
 	}
 
 }

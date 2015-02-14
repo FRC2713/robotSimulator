@@ -1,5 +1,7 @@
 package code.org.usfirst.frc.team2713.robot.subsystems;
 
+import api.Subsystem.Subsystem;
+
 /**
  *
  */

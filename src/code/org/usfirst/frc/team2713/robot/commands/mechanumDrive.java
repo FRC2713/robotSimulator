@@ -1,5 +1,7 @@
 package code.org.usfirst.frc.team2713.robot.commands;
 
+import api.Prefrences.Preferences;
+
 public class mechanumDrive extends commandBase{
 	
 	Preferences prefs;
@@ -8,7 +10,7 @@ public class mechanumDrive extends commandBase{
 	double POLARITY;
 	
 	public mechanumDrive(){
-	prefs = Preferences.getInstance();
+		prefs = Preferences.getInstance();
 	}
 	
 	protected void execute() {
@@ -18,6 +20,7 @@ public class mechanumDrive extends commandBase{
 		POLARITY = -1;
 		drive.roboDrive.setSafetyEnabled(false);
     	drive.CartesianDrive(OI.xbox.getX()*SCALER*POLARITY, OI.xbox.getY()*SCALER,OI.xbox.getRightX()*SCALER*POLARITY,DEADBAND);
+    	System.out.println(drive.thisEncoder.getDistance());
 	}
 	
 }

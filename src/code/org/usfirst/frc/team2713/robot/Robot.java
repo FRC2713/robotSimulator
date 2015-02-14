@@ -4,7 +4,15 @@ import java.awt.Image;
 
 import code.org.usfirst.frc.team2713.robot.commands.commandBase;
 import code.org.usfirst.frc.team2713.robot.subsystems.ExampleSubsystem;
-import api.iterativerobot.*;
+import api.CameraServer.CameraServer;
+import api.Command.Command;
+import api.LiveWindow.LiveWindow;
+import api.NIVision.NIVision;
+import api.Prefrences.Preferences;
+import api.Schduler.Scheduler;
+import api.SmartDashboard.SmartDashboard;
+import api.iterativerobot.IterativeRobot;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as described in the IterativeRobot documentation. If you change the name of this class or
@@ -32,15 +40,15 @@ public class Robot extends IterativeRobot {
 		System.out.println("*Awsome-sauce code produced by RyNaJaSa  inc.      *");
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
-		autonomousCommand = new ExampleCommand();
+		autonomousCommand = new Command();
 
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 		session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 		NIVision.IMAQdxConfigureGrab(session);
 
-		prefs = Preferences.getInstance();
-		prefs.putDouble("SCALER", 0.6);
-		prefs.putDouble("DEADBAND", 0.1);
+		prefs = Preferences.getInstance(); //Needs to be coded
+		prefs.putDouble("SCALER", 0.6); //Needs to be coded
+		prefs.putDouble("DEADBAND", 0.1); //Needs to be coded
 		SmartDashboard.putData(Scheduler.getInstance());
 
 	}

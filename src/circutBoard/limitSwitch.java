@@ -1,7 +1,13 @@
 package circutBoard;
 
-import javax.swing.JPanel;
+import javax.swing.JButton;
 
-public class limitSwitch extends JPanel{
+public class limitSwitch extends JButton {
 
+	public boolean pressed = false;
+	
+	public limitSwitch(int portNum) {
+		super("Limit Switch For " + portNum);
+	}
+	
 }

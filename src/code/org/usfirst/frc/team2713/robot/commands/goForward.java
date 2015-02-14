@@ -1,5 +1,7 @@
 package code.org.usfirst.frc.team2713.robot.commands;
 
+import api.Sensors.*;
+
 public class goForward extends commandBase{
 	
 	double distance;
