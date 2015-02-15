@@ -12,7 +12,7 @@ public class Preferences {
 
 	public double getDouble(String string, double d) {
 		// TODO Auto-generated method stub
-		return 0;
+		return d;
 	}
 	
 }
