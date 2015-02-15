@@ -36,6 +36,13 @@ public class RobotDrive {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void tankDrive(double left, double right) {
+		frontLeft.set(left);
+		frontRight.set(right);
+		backLeft.set(left);
+		backRight.set(right);		
+	}
 	
 	
 }

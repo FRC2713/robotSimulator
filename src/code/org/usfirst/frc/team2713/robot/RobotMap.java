@@ -23,15 +23,15 @@ public class RobotMap {
     public static final int LIFT_MOTOR = 6;
     public static final int GRAB_MOTOR = 7;
     
-    public static final int XBOX_PORT = 4;
+    public static final int XBOX_PORT = 2;
         
-    public static final boolean INIT_DRIVE = false;
+    public static final boolean INIT_DRIVE = true;
     public static final boolean INIT_LIFT = true;
     public static final boolean INIT_GRAB = true;
         
     public static final int AMMOUNT_OF_CRATES_TO_GET_IN_AUTONOMOUS = 1;
     
-    public static final int TIME_TO_CLOSE_OR_OPEN = 6;
+    public static final int TIME_TO_CLOSE_OR_OPEN = 1;
     
     public static final int DRIVE_ENCODER_B_CHANNEL = 5;
     public static final int DRIVE_ENCODER_A_CHANNEL = 4;

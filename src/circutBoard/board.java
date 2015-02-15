@@ -44,9 +44,9 @@ public class board extends JFrame {
 		if (jaguarNum <= 4) {
 			jags[portNum].setBounds(150 * jaguarNum - 1, 100, 100, 100);
 		} else if (jaguarNum <= 8) {
-			jags[portNum].setBounds(150 * (jaguarNum - 5) + 100, 300, 100, 100);
+			jags[portNum].setBounds(150 * (jaguarNum - 4), 300, 100, 100);
 		} else {
-			jags[portNum].setBounds(150 * (jaguarNum - 9) + 100, 500, 100, 100);
+			jags[portNum].setBounds(150 * (jaguarNum - 5), 500, 100, 100);
 		}
 		add(jags[portNum]);
 		repaint();
@@ -65,6 +65,7 @@ public class board extends JFrame {
 		numOfSensors++;
 		encoders[portNum] = new encoder();
 		encoders[portNum].setBounds(800 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 15);
+		encoders[portNum].reset();
 		add(encoders[portNum]);
 	}
 

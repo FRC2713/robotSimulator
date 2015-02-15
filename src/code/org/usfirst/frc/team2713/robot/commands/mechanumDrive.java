@@ -19,7 +19,7 @@ public class mechanumDrive extends commandBase{
 		DEADBAND = prefs.getDouble("DEADBAND",0.1);
 		POLARITY = -1;
 		drive.roboDrive.setSafetyEnabled(false);
-    	drive.CartesianDrive(OI.xbox.getX()*SCALER*POLARITY, OI.xbox.getY()*SCALER,OI.xbox.getRightX()*SCALER*POLARITY,DEADBAND);
+    	drive.TankDrive(OI.xbox.getX(), OI.xbox.getY());
     	System.out.println(drive.thisEncoder.getDistance());
 	}
 	
