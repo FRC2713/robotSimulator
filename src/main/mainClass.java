@@ -72,7 +72,6 @@ public class mainClass {
 		thisBoard.setBounds(0, 0, screenWidth, screenHeight);
 		thisBoard.setVisible(true);
 		thisBoard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		thisBoard.startCode();
 	}
 	
 }

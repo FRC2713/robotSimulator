@@ -1,5 +1,6 @@
-package api.inputs;
+package api.Input;
 
+import main.mainClass;
 import api.Command.Command;
 
 public class JoystickButton extends Thread {
@@ -21,7 +22,7 @@ public class JoystickButton extends Thread {
 	}
 
 	public void run() {
-		while (true) {
+		while (true && mainClass.thisBoard.robot.enabled) {
 			try {
 				execute();
 			} catch (NullPointerException ex) {

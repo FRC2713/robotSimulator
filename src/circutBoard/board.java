@@ -1,12 +1,13 @@
 package circutBoard;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import main.mainClass;
 import code.org.usfirst.frc.team2713.robot.Robot;
 
 public class board extends JFrame {
@@ -17,9 +18,13 @@ public class board extends JFrame {
 	public encoder[] encoders;
 	int jaguarNum;
 	int numOfSensors = 0;
-	Robot robot;
+	public Robot robot;
 	boolean limitSwitchPressed = false;
 	int limitSwitchPressedNum;
+	JButton enableTeleop;
+	JButton enableAuto;
+	JButton enableComp;
+	JButton[] disable;
 
 	public board() {
 		setLayout(null);
@@ -29,13 +34,26 @@ public class board extends JFrame {
 		updater = new updateThread();
 		updater.start();
 		jaguarNum = 0;
-	}
-
-	public void startCode() {
 		robot = new Robot();
-		robot.robotInit();
-		robot.teleopInit();
-		robot.teleopPeriodic();
+		enableTeleop = new JButton("Enable Teleop");
+		enableTeleop.setBounds(100, mainClass.screenHeight - 300, 100, 50);
+		enableTeleop.addActionListener(new listenToEnableDisable(true, false, false));
+		add(enableTeleop);
+		enableAuto = new JButton("Enable Autonomous");
+		enableAuto.setBounds(100, mainClass.screenHeight - 230, 100, 50);
+		enableAuto.addActionListener(new listenToEnableDisable(false, true, false));
+		add(enableAuto);
+		enableComp = new JButton("Simulate Competition");
+		enableComp.setBounds(100, mainClass.screenHeight - 160, 100, 50);
+		enableComp.addActionListener(new listenToEnableDisable(true, true, false));
+		add(enableComp);
+		disable = new JButton[3];
+		for(int i = 0; i < disable.length; i++) {
+			disable[i] = new JButton("Disable");
+			disable[i].setBounds(250, mainClass.screenHeight - (300 - 70*i), 100, 50);
+			disable[i].addActionListener(new listenToEnableDisable(false, false, true));
+			add(disable[i]);
+		}
 	}
 
 	public void createJaguar(int portNum) {
@@ -56,15 +74,18 @@ public class board extends JFrame {
 	public void createLimitSwitch(int portNum) {
 		numOfSensors++;
 		limitSwitches[portNum] = new limitSwitch(portNum);
-		limitSwitches[portNum].setBounds(800 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 50);
-		limitSwitches[portNum].addActionListener(new listenToLimitSwitch(portNum));
+		limitSwitches[portNum].setBounds(800 + 150 * numOfSensors % 2,
+				50 + 100 * numOfSensors / 2, 150, 50);
+		limitSwitches[portNum].addActionListener(new listenToLimitSwitch(
+				portNum));
 		add(limitSwitches[portNum]);
 	}
 
 	public void createEncoder(int portNum) {
 		numOfSensors++;
 		encoders[portNum] = new encoder();
-		encoders[portNum].setBounds(800 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 15);
+		encoders[portNum].setBounds(800 + 150 * numOfSensors % 2,
+				50 + 100 * numOfSensors / 2, 150, 15);
 		encoders[portNum].reset();
 		add(encoders[portNum]);
 	}
@@ -93,6 +114,49 @@ public class board extends JFrame {
 			limitSwitchPressed = true;
 			limitSwitchPressedNum = portNum;
 		}
+	}
+
+	public class listenToEnableDisable implements ActionListener {
+
+		boolean teleop;
+		boolean auto;
+		boolean disable;
+
+		public listenToEnableDisable(boolean teleop1, boolean auto1,
+				boolean disable1) {
+			teleop = teleop1;
+			auto = auto1;
+			disable = disable1;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if (disable) {
+				robot.setEnabledDisabled(false);
+			} else {
+				if(teleop && auto) {
+					robot.setEnabledDisabled(true);
+					robot.robotInit();
+					robot.autonomousInit();
+					robot.autonomousPeriodic();
+					robot.teleopInit();
+					robot.teleopPeriodic();
+				} else if (teleop) {
+					robot.setEnabledDisabled(true);
+					robot.robotInit();
+					robot.teleopInit();
+					robot.teleopPeriodic();
+				} else if(auto) {
+					robot.setEnabledDisabled(true);
+					robot.robotInit();
+					robot.autonomousInit();
+					robot.autonomousPeriodic();
+				}
+
+			}
+
+		}
+
 	}
 
 }

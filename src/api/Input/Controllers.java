@@ -1,4 +1,4 @@
-package api.inputs;
+package api.Input;
 
 import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;

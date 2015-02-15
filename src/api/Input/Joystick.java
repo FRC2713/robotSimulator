@@ -1,7 +1,8 @@
-package api.inputs;
+package api.Input;
 
+import main.mainClass;
 import net.java.games.input.Controller;
-import api.inputs.Controllers;
+import api.Input.Controllers;
 
 public class Joystick {
 
@@ -11,7 +12,7 @@ public class Joystick {
 	int zPortNum;
 	int portNum;
 	int additive;
-	
+
 	private static String OS = System.getProperty("os.name").toLowerCase();
 
 	public Joystick(int port) {
@@ -40,33 +41,52 @@ public class Joystick {
 	}
 
 	public double getX() {
-		Controllers.ca[portNum].poll();
-		return calcDeadban(
-				thisController.getComponents()[xPortNum].getPollData(), .1);
+		if (mainClass.thisBoard.robot.enabled) {
+			Controllers.ca[portNum].poll();
+			return calcDeadban(
+					thisController.getComponents()[xPortNum].getPollData(), .1);
+		}
+		return 0;
 	}
 
 	public double getY() {
-		Controllers.ca[portNum].poll();
-		return calcDeadban(
-				thisController.getComponents()[yPortNum].getPollData(), .1);
+		if (mainClass.thisBoard.robot.enabled) {
+			Controllers.ca[portNum].poll();
+			return calcDeadban(
+					thisController.getComponents()[yPortNum].getPollData(), .1);
+		}
+		return 0;
 	}
 
 	public double getZ() {
-		Controllers.ca[portNum].poll();
-		return calcDeadban(
-				thisController.getComponents()[zPortNum].getPollData(), .1);
+		if (mainClass.thisBoard.robot.enabled) {
+			Controllers.ca[portNum].poll();
+			return calcDeadban(
+					thisController.getComponents()[zPortNum].getPollData(), .1);
+		}
+		return 0;
 	}
 
 	public double getRawAxis(int axis) {
-		Controllers.ca[portNum].poll();
-		return calcDeadban(thisController.getComponents()[axis + additive].getPollData(),
-				.1);
+		if (mainClass.thisBoard.robot.enabled) {
+			Controllers.ca[portNum].poll();
+			return calcDeadban(
+					thisController.getComponents()[axis + additive]
+							.getPollData(),
+					.1);
+		}
+		return 0;
 	}
 
 	public boolean getRawButton(int port) {
-		Controllers.ca[portNum].poll();
-		if (calcDeadban(thisController.getComponents()[port + additive].getPollData(), .1) > 0) {
-			return true;
+		if (mainClass.thisBoard.robot.enabled) {
+			Controllers.ca[portNum].poll();
+			if (calcDeadban(
+					thisController.getComponents()[port + additive]
+							.getPollData(),
+					.1) > 0) {
+				return true;
+			}
 		}
 		return false;
 	}

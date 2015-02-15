@@ -22,7 +22,7 @@ public class GrabberSubsystem extends Subsystem {
 			armClosed = new DigitalInput(RobotMap.ARM_LIMIT_SWITCH_NUM);
 		}
 	}
-	
+
 	public void intiCommand() {
 		graberCommand.start();
 	}
@@ -36,7 +36,7 @@ public class GrabberSubsystem extends Subsystem {
 	}
 
 	public double getAmps() {
-		return  ((CANJaguar) grab.getProperController()).getBusVoltage();
+		return ((CANJaguar) grab.getProperController()).getBusVoltage();
 	}
 
 	public double getRaw() {

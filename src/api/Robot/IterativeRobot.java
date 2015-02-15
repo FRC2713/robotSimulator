@@ -1,13 +1,21 @@
-package api.iterativerobot;
+package api.Robot;
+
+import api.Command.CommandManager;
 
 public class IterativeRobot {
-
+	
+	public boolean enabled = false;
+	public CommandManager manage;
+	
 	public IterativeRobot() {
+		enabled = false;
+		manage = new CommandManager();
+		manage.start();
 		
 	}
 	
 	public void robotInit() {
-		
+
 	}
 	
 	public void disabledPeriodic() {
@@ -32,6 +40,10 @@ public class IterativeRobot {
 	
 	public void testPeriodic() {
 		
+	}
+	
+	public void setEnabledDisabled(boolean state) {
+		enabled = state;
 	}
 	
 }

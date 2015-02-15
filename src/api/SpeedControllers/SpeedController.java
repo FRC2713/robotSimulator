@@ -3,7 +3,7 @@ package api.SpeedControllers;
 import main.mainClass;
 
 public class SpeedController {
-	
+
 	int portNum;
 	int multiplier = 1;
 
@@ -13,13 +13,15 @@ public class SpeedController {
 	}
 
 	public void set(double speed) {
-		mainClass.thisBoard.jags[portNum].setSpeed(multiplier * speed);
+		if (mainClass.thisBoard.robot.enabled) {
+			mainClass.thisBoard.jags[portNum].setSpeed(multiplier * speed);
+		}
 	}
-	
+
 	public void setInverted(boolean trueOrFalse) {
-		if(trueOrFalse) {
+		if (trueOrFalse) {
 			multiplier = -1;
-		} else { 
+		} else {
 			multiplier = 1;
 		}
 	}

@@ -4,7 +4,7 @@
  */
 package code.org.usfirst.frc.team2713.robot.inputs;
 
-import api.inputs.Joystick;
+import api.Input.Joystick;
 
 /**
  *
