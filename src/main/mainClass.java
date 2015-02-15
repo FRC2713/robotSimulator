@@ -18,33 +18,37 @@ public class mainClass {
 	public static void main(String[] args) {
 		 Controller[] ca = ControllerEnvironment.getDefaultEnvironment().getControllers();
 
-//	        for(int i =2;i<ca.length;i++){
-//
-//	            /* Get the name of the controller */
-//	            System.out.println(ca[i].getName());         
-//	            System.out.println("Type: "+ca[i].getType().toString());
-//
-//	            /* Get this controllers components (buttons and axis) */
-//	            Component[] components = ca[i].getComponents();
-//	            System.out.println("Component Count: "+components.length);
-//	            for(int j=0;j<components.length;j++){
-//	                
-//	                /* Get the components name */
-//	                System.out.println("Component "+j+": "+components[j].getName());
-//	                System.out.println("    Identifier: "+ components[j].getIdentifier().getName());
-//	                System.out.print("    ComponentType: ");
-//	                if (components[j].isRelative()) {
-//	                    System.out.print("Relative");
-//	                } else {
-//	                    System.out.print("Absolute");
-//	                }
-//	                if (components[j].isAnalog()) {
-//	                    System.out.print(" Analog");
-//	                } else {
-//	                    System.out.print(" Digital");
-//	                }
-//	            }
-//	        }
+	        for(int i =2;i<ca.length;i++){
+
+	            /* Get the name of the controller */
+	            System.out.println(ca[i].getName());         
+	        	if(ca[i].getName().equals("Logitech Attack 3")) {
+	        		System.out.println(i);
+	        	}
+	            System.out.println("Type: "+ca[i].getType().toString());
+
+	            /* Get this controllers components (buttons and axis) */
+	            Component[] components = ca[i].getComponents();
+	            System.out.println("Component Count: "+components.length);
+	            for(int j=0;j<components.length;j++){
+	                
+	                /* Get the components name */
+	                System.out.println("Component "+j+": "+components[j].getName());
+	                System.out.println("    Identifier: "+ components[j].getIdentifier().getName());
+	                System.out.print("    ComponentType: ");
+	                if (components[j].isRelative()) {
+	                    System.out.print("Relative");
+	                } else {
+	                    System.out.print("Absolute");
+	                }
+	                if (components[j].isAnalog()) {
+	                    System.out.print(" Analog");
+	                } else {
+	                    System.out.print(" Digital");
+	                }
+	            }
+	        }
+	        System.out.println(ca.length);
 	     //System.out.println((ca[2].getComponents()[2]).getPollData());
 
 		initGame();

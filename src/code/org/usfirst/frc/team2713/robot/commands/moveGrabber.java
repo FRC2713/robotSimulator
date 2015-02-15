@@ -5,19 +5,19 @@ import code.org.usfirst.frc.team2713.robot.OI;
 public class moveGrabber extends commandBase {
 
 	Boolean inOrOut;
-	double triggerPolarity = OI.xbox.getTriggerAxis();
+	double triggerPolarity = OI.xbox.getX();
 
 	public void getTiggerPolarity() {
-		if (OI.xbox.getTriggerAxis() != 0 && OI.xbox.getZ() != 0) {
+		if (OI.xbox.getX() != 0 && OI.xbox.getZ() != 0) {
 			inOrOut = null;
 			triggerPolarity = 0;
-		} else if (OI.xbox.getTriggerAxis() != 0) {
+		} else if (OI.xbox.getX() != 0) {
 			inOrOut = true;
-			triggerPolarity = OI.xbox.getTriggerAxis();
+			triggerPolarity = OI.xbox.getX();
 		} else if (OI.xbox.getZ() != 0) {
 			inOrOut = false;
 			triggerPolarity = OI.xbox.getZ();
-		} else if (OI.xbox.getTriggerAxis() == 0 && OI.xbox.getZ() == 0) {
+		} else if (OI.xbox.getX() == 0 && OI.xbox.getZ() == 0) {
 			triggerPolarity = 0;
 			inOrOut = null;
 		}

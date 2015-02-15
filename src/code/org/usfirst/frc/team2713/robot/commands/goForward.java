@@ -22,7 +22,7 @@ public class goForward extends commandBase{
 		drive.move(.7);
 	}
 
-	protected boolean isFinished() {
+	public boolean isFinished() {
 //        if(drive.thisEncoder.getDistance() > distance*12) {
 //            drive.move(0);
 //            return true;

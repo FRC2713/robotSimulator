@@ -2,11 +2,11 @@ package code.org.usfirst.frc.team2713.robot.commands;
 
 public class turn90Right extends commandBase{
 
-	protected void execute() {
+	public void execute() {
 		//To Be Coded
 	}
 	
-	protected boolean isFinished() {
+	public boolean isFinished() {
 		
 		return false;
 	}

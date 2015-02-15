@@ -3,9 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/ryan/Documents/Programming/robotSimulator/archive/dist"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Ryan/Google Drive/Home/Programming/robotSimulator/archive/dist"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/ryan/Documents/Programming/robotSimulator/archive/dist/jinput.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ryan/Google Drive/Home/Programming/robotSimulator/archive/dist/jinput.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ryan/Google Drive/Home/Programming/robotSimulator/archive/dist/jinput-test.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
