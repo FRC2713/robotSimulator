@@ -7,8 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
 
+import org.usfirst.frc.team2713.robot.Robot;
+
 import main.mainClass;
-import code.org.usfirst.frc.team2713.robot.Robot;
 
 public class board extends JFrame {
 
