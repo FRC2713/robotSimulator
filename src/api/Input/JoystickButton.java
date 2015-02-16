@@ -14,6 +14,7 @@ public class JoystickButton extends Thread {
 	Joystick controller;
 	boolean pushedIn = false;
 	boolean started = false;
+	boolean toBePressedAgain = false;
 
 	public JoystickButton(Joystick controller1, int buttonID1) {
 		controller = controller1;
@@ -45,10 +46,12 @@ public class JoystickButton extends Thread {
 					pushedIn = true;
 				}
 			}
-			if (whileHeld != null) {
+			if (whileHeld != null && !toBePressedAgain) {
 				if (!whileHeld.isFinished()) {
 					whileHeld.execute();
 					pushedIn = true;
+				} else {
+					toBePressedAgain = true;
 				}
 			}
 		} else {
@@ -56,6 +59,7 @@ public class JoystickButton extends Thread {
 				if (whenReleased != null) {
 					whenReleased.execute();
 					pushedIn = false;
+					toBePressedAgain = false;
 				}
 			}
 			if (whenPressed != null) {

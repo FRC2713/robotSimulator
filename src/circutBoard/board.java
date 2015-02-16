@@ -1,11 +1,11 @@
 package circutBoard;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextPane;
 
 import main.mainClass;
 import code.org.usfirst.frc.team2713.robot.Robot;
@@ -25,12 +25,15 @@ public class board extends JFrame {
 	JButton enableAuto;
 	JButton enableComp;
 	JButton[] disable;
+	public JTextPane[] encoderJagNum;
+
 
 	public board() {
 		setLayout(null);
 		jags = new jaguar[10];
 		limitSwitches = new limitSwitch[10];
 		encoders = new encoder[10];
+		encoderJagNum = new JTextPane[10];
 		updater = new updateThread();
 		updater.start();
 		jaguarNum = 0;
@@ -58,7 +61,7 @@ public class board extends JFrame {
 
 	public void createJaguar(int portNum) {
 		jaguarNum++;
-		jags[portNum] = new jaguar();
+		jags[portNum] = new jaguar(portNum);
 		if (jaguarNum <= 4) {
 			jags[portNum].setBounds(150 * jaguarNum - 1, 100, 100, 100);
 		} else if (jaguarNum <= 8) {
@@ -84,10 +87,12 @@ public class board extends JFrame {
 	public void createEncoder(int portNum) {
 		numOfSensors++;
 		encoders[portNum] = new encoder();
-		encoders[portNum].setBounds(800 + 150 * numOfSensors % 2,
-				50 + 100 * numOfSensors / 2, 150, 15);
+		encoderJagNum[portNum] = new JTextPane();
+		encoders[portNum].setBounds(800 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 15);
+		encoderJagNum[portNum].setBounds(1000 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 15);
 		encoders[portNum].reset();
 		add(encoders[portNum]);
+		add(encoderJagNum[portNum]);
 	}
 
 	public void updateItems() {

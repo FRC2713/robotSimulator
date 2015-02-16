@@ -1,16 +1,20 @@
 package api.Robot;
 
 import api.Command.CommandManager;
+import api.Sensors.EncoderManager;
 
 public class IterativeRobot {
 	
 	public boolean enabled = false;
 	public CommandManager manage;
+	public EncoderManager encoders;
 	
 	public IterativeRobot() {
 		enabled = false;
 		manage = new CommandManager();
 		manage.start();
+		encoders = new EncoderManager();
+		encoders.start();
 		
 	}
 	
