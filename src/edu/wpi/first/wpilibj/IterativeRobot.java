@@ -5,16 +5,13 @@ import edu.wpi.first.wpilibj.command.CommandManager;
 public class IterativeRobot {
 	
 	public boolean enabled = false;
-	public CommandManager manage;
-	public EncoderManager encoders;
+	
+	public void createEncoderManager() {
+		
+	}
 	
 	public IterativeRobot() {
-		enabled = false;
-		manage = new CommandManager();
-		manage.start();
-		encoders = new EncoderManager();
-		encoders.start();
-		
+
 	}
 	
 	public void robotInit() {

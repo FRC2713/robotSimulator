@@ -8,6 +8,10 @@ public class EncoderManager extends Thread {
 	ArrayList<Encoder> encoders = new ArrayList<Encoder>();;
 	ArrayList<Boolean> running = new ArrayList<Boolean>();
 
+	public EncoderManager() {
+		start();
+	}
+	
 	public void run() {
 		while (true) {
 			try {

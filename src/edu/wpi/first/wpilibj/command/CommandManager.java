@@ -10,6 +10,10 @@ public class CommandManager extends Thread {
 	ArrayList<Command> bases = new ArrayList<Command>();;
 	ArrayList<Boolean> running = new ArrayList<Boolean>();
 
+	public CommandManager() {
+		start();
+	}
+	
 	public void run() {
 		while (true) {
 			try {
@@ -23,6 +27,9 @@ public class CommandManager extends Thread {
 					for (int i = 0; i < commands.size(); i++) {
 						if (!commands.get(i).isFinished() && running.get(i)) {
 							commands.get(i).execute();
+						}
+						if(commands.get(i).isFinished()) {
+							commands.remove(i);
 						}
 					}
 				}

@@ -14,5 +14,14 @@ public class Preferences {
 		// TODO Auto-generated method stub
 		return d;
 	}
+
+	public int putInt(String string, int i) {
+		return i;
+	}
+
+	public int getInt(String string, int i) {
+		// TODO Auto-generated method stub
+		return i;
+	}
 	
 }

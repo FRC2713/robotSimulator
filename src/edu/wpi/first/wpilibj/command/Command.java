@@ -24,8 +24,8 @@ public class Command {
 
 	public void start() {
 		if (mainClass.thisBoard.robot.enabled) {
-			id = mainClass.thisBoard.robot.manage.addThread(this);
-			mainClass.thisBoard.robot.manage.start(id);
+			id = mainClass.thisBoard.manager.addThread(this);
+			mainClass.thisBoard.manager.start(id);
 			
 		}
 	}

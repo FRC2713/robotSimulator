@@ -22,6 +22,10 @@ public class RobotDrive {
 		backRight = new CANJaguar(backRightPort);
 	}
 
+	public RobotDrive(int i, int j) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setExpiration(double expiration) {
 
 	}

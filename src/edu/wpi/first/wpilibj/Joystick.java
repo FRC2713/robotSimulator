@@ -108,4 +108,9 @@ public class Joystick {
 		return (OS.indexOf("mac") >= 0);
 	}
 
+	public double getTwist() {
+		// TODO Auto-generated method stub
+		return getZ();
+	}
+
 }

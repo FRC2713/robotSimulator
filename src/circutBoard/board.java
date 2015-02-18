@@ -9,6 +9,8 @@ import javax.swing.JTextPane;
 
 import org.usfirst.frc.team2713.robot.Robot;
 
+import edu.wpi.first.wpilibj.EncoderManager;
+import edu.wpi.first.wpilibj.command.CommandManager;
 import main.mainClass;
 
 public class board extends JFrame {
@@ -27,6 +29,8 @@ public class board extends JFrame {
 	JButton enableComp;
 	JButton[] disable;
 	public JTextPane[] encoderJagNum;
+	public CommandManager manager = new CommandManager();
+	public EncoderManager encodersManager = new EncoderManager();
 
 
 	public board() {
@@ -36,9 +40,7 @@ public class board extends JFrame {
 		encoders = new encoder[10];
 		encoderJagNum = new JTextPane[10];
 		updater = new updateThread();
-		updater.start();
 		jaguarNum = 0;
-		robot = new Robot();
 		enableTeleop = new JButton("Enable Teleop");
 		enableTeleop.setBounds(100, mainClass.screenHeight - 300, 100, 50);
 		enableTeleop.addActionListener(new listenToEnableDisable(true, false, false));
@@ -58,6 +60,7 @@ public class board extends JFrame {
 			disable[i].addActionListener(new listenToEnableDisable(false, false, true));
 			add(disable[i]);
 		}
+		updater.start();
 	}
 
 	public void createJaguar(int portNum) {
@@ -141,6 +144,7 @@ public class board extends JFrame {
 				robot.setEnabledDisabled(false);
 			} else {
 				if(teleop && auto) {
+					robot = new Robot();
 					robot.setEnabledDisabled(true);
 					robot.robotInit();
 					robot.autonomousInit();
@@ -148,11 +152,13 @@ public class board extends JFrame {
 					robot.teleopInit();
 					robot.teleopPeriodic();
 				} else if (teleop) {
+					robot = new Robot();
 					robot.setEnabledDisabled(true);
 					robot.robotInit();
 					robot.teleopInit();
 					robot.teleopPeriodic();
 				} else if(auto) {
+					robot = new Robot();
 					robot.setEnabledDisabled(true);
 					robot.robotInit();
 					robot.autonomousInit();

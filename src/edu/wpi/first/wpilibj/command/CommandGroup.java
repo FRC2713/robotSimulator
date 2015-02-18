@@ -6,6 +6,8 @@ public class CommandGroup extends Command {
 
 	ArrayList<Command> commands;
 	ArrayList<Boolean> run;
+	boolean isFinished = false;
+	int commandToRun = 0;
 	public CommandGroup() {
 		commands = new ArrayList<Command>();
 		run = new ArrayList<Boolean>();
@@ -13,13 +15,14 @@ public class CommandGroup extends Command {
 	
 	
 	public void execute() {
-		for(int i = 0; i < commands.size(); i++) {
-			if(run.get(i) == false) {
-				commands.get(i).execute();
-				if(commands.get(i).isFinished() == true) {
-					run.set(i, true);
+		if(!isFinished) {
+			if(commands.size() > commandToRun) {
+				if(!commands.get(commandToRun).isFinished()) {
+					commands.get(commandToRun).execute();
+				} else {
+					commandToRun++;
+					System.out.println(commandToRun);
 				}
-				
 			}
 		}
 	}

@@ -12,11 +12,11 @@ public class Encoder {
 	public Encoder(int portNum1, int portNum2) {
 		portNum = portNum1;
 		mainClass.createEncoder(portNum1);
-		id = mainClass.thisBoard.robot.encoders.addThread(this);
+		id = mainClass.thisBoard.encodersManager.addThread(this);
 	}
 	
 	public double getDistance() {
-		return mainClass.thisBoard.robot.encoders.encoders.get(id).distanceTravled;
+		return mainClass.thisBoard.encodersManager.encoders.get(id).distanceTravled;
 	}
 	
 	public void setDistancePerPulse(double distance) {
