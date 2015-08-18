@@ -4,16 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextPane;
 
 import org.usfirst.frc.team2713.robot.Robot;
 
 import edu.wpi.first.wpilibj.EncoderManager;
 import edu.wpi.first.wpilibj.command.CommandManager;
-import main.mainClass;
+import main.Main;
 
-public class board extends JFrame {
+public class board {
 
 	updateThread updater;
 	public jaguar[] jags;
@@ -34,7 +33,6 @@ public class board extends JFrame {
 
 
 	public board() {
-		setLayout(null);
 		jags = new jaguar[10];
 		limitSwitches = new limitSwitch[10];
 		encoders = new encoder[10];
@@ -42,23 +40,23 @@ public class board extends JFrame {
 		updater = new updateThread();
 		jaguarNum = 0;
 		enableTeleop = new JButton("Enable Teleop");
-		enableTeleop.setBounds(100, mainClass.screenHeight - 300, 100, 50);
+		enableTeleop.setBounds(100, Main.screenHeight - 300, 100, 50);
 		enableTeleop.addActionListener(new listenToEnableDisable(true, false, false));
-		add(enableTeleop);
+		Main.display.add(enableTeleop);
 		enableAuto = new JButton("Enable Autonomous");
-		enableAuto.setBounds(100, mainClass.screenHeight - 230, 100, 50);
+		enableAuto.setBounds(100, Main.screenHeight - 230, 100, 50);
 		enableAuto.addActionListener(new listenToEnableDisable(false, true, false));
-		add(enableAuto);
+		Main.display.add(enableAuto);
 		enableComp = new JButton("Simulate Competition");
-		enableComp.setBounds(100, mainClass.screenHeight - 160, 100, 50);
+		enableComp.setBounds(100, Main.screenHeight - 160, 100, 50);
 		enableComp.addActionListener(new listenToEnableDisable(true, true, false));
-		add(enableComp);
+		Main.display.add(enableComp);
 		disable = new JButton[3];
 		for(int i = 0; i < disable.length; i++) {
 			disable[i] = new JButton("Disable");
-			disable[i].setBounds(250, mainClass.screenHeight - (300 - 70*i), 100, 50);
+			disable[i].setBounds(250, Main.screenHeight - (300 - 70*i), 100, 50);
 			disable[i].addActionListener(new listenToEnableDisable(false, false, true));
-			add(disable[i]);
+			Main.display.add(disable[i]);
 		}
 		updater.start();
 	}

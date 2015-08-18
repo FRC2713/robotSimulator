@@ -2,11 +2,14 @@ package edu.wpi.first.wpilibj.buttons;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import main.mainClass;
+import main.Main;
 
 public class JoystickButton extends Thread {
 
 	boolean pressed;
+	int whileHeldID = 0;
+	int whenPressedID = 1;
+	int whenReleasedID = 2;
 	Command whileHeld;
 	Command baseWhileHeld;
 	Command whenPressed;
@@ -24,7 +27,7 @@ public class JoystickButton extends Thread {
 	}
 
 	public void run() {
-		while (true && mainClass.thisBoard.robot.enabled) {
+		while (true && Main.thisBoard.robot.enabled) {
 			try {
 				execute();
 			} catch (NullPointerException ex) {

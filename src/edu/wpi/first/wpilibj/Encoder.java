@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj;
 
-import main.mainClass;
+import main.Main;
 
 public class Encoder {
 
@@ -11,12 +11,12 @@ public class Encoder {
 	
 	public Encoder(int portNum1, int portNum2) {
 		portNum = portNum1;
-		mainClass.createEncoder(portNum1);
-		id = mainClass.thisBoard.encodersManager.addThread(this);
+		Main.createEncoder(portNum1);
+		id = Main.thisBoard.encodersManager.addThread(this);
 	}
 	
 	public double getDistance() {
-		return mainClass.thisBoard.encodersManager.encoders.get(id).distanceTravled;
+		return Main.thisBoard.encodersManager.encoders.get(id).distanceTravled;
 	}
 	
 	public void setDistancePerPulse(double distance) {
@@ -24,7 +24,7 @@ public class Encoder {
 	}
 
 	public void reset() {
-		mainClass.thisBoard.encoders[portNum].reset();
+		Main.thisBoard.encoders[portNum].reset();
 		
 	}
 

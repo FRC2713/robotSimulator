@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj;
 
-import main.mainClass;
+import main.Main;
 import net.java.games.input.Controller;
 
 public class Joystick {
@@ -40,7 +40,7 @@ public class Joystick {
 	}
 
 	public double getX() {
-		if (mainClass.thisBoard.robot.enabled) {
+		if (Main.thisBoard.robot.enabled) {
 			Controllers.ca[portNum].poll();
 			return calcDeadban(
 					thisController.getComponents()[xPortNum].getPollData(), .1);
@@ -49,7 +49,7 @@ public class Joystick {
 	}
 
 	public double getY() {
-		if (mainClass.thisBoard.robot.enabled) {
+		if (Main.thisBoard.robot.enabled) {
 			Controllers.ca[portNum].poll();
 			return calcDeadban(
 					thisController.getComponents()[yPortNum].getPollData(), .1);
@@ -58,7 +58,7 @@ public class Joystick {
 	}
 
 	public double getZ() {
-		if (mainClass.thisBoard.robot.enabled) {
+		if (Main.thisBoard.robot.enabled) {
 			Controllers.ca[portNum].poll();
 			return calcDeadban(
 					thisController.getComponents()[zPortNum].getPollData(), .1);
@@ -67,7 +67,7 @@ public class Joystick {
 	}
 
 	public double getRawAxis(int axis) {
-		if (mainClass.thisBoard.robot.enabled) {
+		if (Main.thisBoard.robot.enabled) {
 			Controllers.ca[portNum].poll();
 			return calcDeadban(
 					thisController.getComponents()[axis + additive]
@@ -78,7 +78,7 @@ public class Joystick {
 	}
 
 	public boolean getRawButton(int port) {
-		if (mainClass.thisBoard.robot.enabled) {
+		if (Main.thisBoard.robot.enabled) {
 			Controllers.ca[portNum].poll();
 			if (calcDeadban(
 					thisController.getComponents()[port + additive]

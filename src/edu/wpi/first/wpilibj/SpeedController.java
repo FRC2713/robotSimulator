@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj;
 
-import main.mainClass;
+import main.Main;
 
 public class SpeedController {
 
@@ -9,12 +9,12 @@ public class SpeedController {
 
 	public SpeedController(int portNum1) {
 		portNum = portNum1;
-		mainClass.createJaguar(portNum1);
+		Main.createJaguar(portNum1);
 	}
 
 	public void set(double speed) {
-		if (mainClass.thisBoard.robot.enabled) {
-			mainClass.thisBoard.jags[portNum].setSpeed(multiplier * speed);
+		if (Main.thisBoard.robot.enabled) {
+			Main.thisBoard.jags[portNum].setSpeed(multiplier * speed);
 		}
 	}
 

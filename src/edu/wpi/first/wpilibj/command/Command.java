@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.command;
 
-import main.mainClass;
+import main.Main;
 
 public class Command {
 
@@ -23,9 +23,9 @@ public class Command {
 	}
 
 	public void start() {
-		if (mainClass.thisBoard.robot.enabled) {
-			id = mainClass.thisBoard.manager.addThread(this);
-			mainClass.thisBoard.manager.start(id);
+		if (Main.thisBoard.robot.enabled) {
+			id = Main.thisBoard.manager.addThread(this);
+			Main.thisBoard.manager.start(id);
 			
 		}
 	}

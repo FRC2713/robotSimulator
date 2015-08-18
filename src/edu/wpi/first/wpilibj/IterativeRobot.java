@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj;
 
-import edu.wpi.first.wpilibj.command.CommandManager;
-
 public class IterativeRobot {
 	
 	public boolean enabled = false;

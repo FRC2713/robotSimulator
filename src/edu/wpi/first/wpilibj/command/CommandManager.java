@@ -2,8 +2,8 @@ package edu.wpi.first.wpilibj.command;
 
 import java.util.ArrayList;
 
+import main.Main;
 
-import main.mainClass;
 
 public class CommandManager extends Thread {
 	ArrayList<Command> commands = new ArrayList<Command>();;
@@ -17,7 +17,7 @@ public class CommandManager extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				while (mainClass.thisBoard.robot.enabled) {
+				while (Main.thisBoard.robot.enabled) {
 					try {
 						Thread.sleep(20);
 					} catch (InterruptedException e) {

@@ -1,12 +1,12 @@
 package circutBoard;
 
-import main.mainClass;
+import main.Main;
 
 public class updateThread extends Thread {
 	
 	public void run() {
 		while(true) {
-			mainClass.thisBoard.updateItems();
+			Main.thisBoard.updateItems();
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {

@@ -2,7 +2,7 @@ package edu.wpi.first.wpilibj;
 
 import java.util.ArrayList;
 
-import main.mainClass;
+import main.Main;
 
 public class EncoderManager extends Thread {
 	ArrayList<Encoder> encoders = new ArrayList<Encoder>();;
@@ -24,8 +24,8 @@ public class EncoderManager extends Thread {
 					}
 					for (int i = 0; i < encoders.size(); i++) {
 						encoders.get(i).distanceTravled += encoders.get(i).distancePerPulse
-								* mainClass.thisBoard.jags[Integer.parseInt(mainClass.thisBoard.encoderJagNum[encoders.get(i).portNum].getText())].speed;
-						mainClass.thisBoard.encoders[encoders.get(i).portNum].setText(Double.toString(encoders.get(i).distanceTravled));
+								* Main.thisBoard.jags[Integer.parseInt(Main.thisBoard.encoderJagNum[encoders.get(i).portNum].getText())].speed;
+						Main.thisBoard.encoders[encoders.get(i).portNum].setText(Double.toString(encoders.get(i).distanceTravled));
 					}
 					try {
 						Thread.sleep(20);
