@@ -49,6 +49,7 @@ public class CommandManager extends Thread {
 		commands.add(toAdd);
 		bases.add(toAdd);
 		running.add(false);
+		System.out.println("Running");
 		return bases.size() - 1;
 	}
 

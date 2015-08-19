@@ -4,19 +4,21 @@ import main.Main;
 
 public class Encoder {
 
-	int id = 0;
 	public int portNum;
-	public double distanceTravled = 0;
+	public double distanceTraveled = 0;
 	public double distancePerPulse = 0;
 	
 	public Encoder(int portNum1, int portNum2) {
 		portNum = portNum1;
-		Main.createEncoder(portNum1);
-		id = Main.thisBoard.encodersManager.addThread(this);
+		Main.thisBoard.encodersManager.addEncoder(this);
+	}
+	
+	public Encoder() {
+		portNum = -1;
 	}
 	
 	public double getDistance() {
-		return Main.thisBoard.encodersManager.encoders.get(id).distanceTravled;
+		return Main.thisBoard.encodersManager.encoders[portNum].distanceTraveled;
 	}
 	
 	public void setDistancePerPulse(double distance) {
@@ -24,8 +26,7 @@ public class Encoder {
 	}
 
 	public void reset() {
-		Main.thisBoard.encoders[portNum].reset();
-		
+		Main.thisBoard.encodersManager.encoders[portNum].distanceTraveled = 0;
 	}
 
 	

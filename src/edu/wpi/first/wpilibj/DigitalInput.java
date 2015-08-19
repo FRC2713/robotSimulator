@@ -12,7 +12,7 @@ public class DigitalInput {
 	}
 	
 	public boolean get() {
-		return !Main.thisBoard.limitSwitches[portNum].pressed;
+		return Main.thisBoard.limitSwitches[portNum].pressed;
 	}
 	
 }

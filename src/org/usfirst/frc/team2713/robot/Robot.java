@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import org.usfirst.frc.team2713.robot.commands.commandBase;
@@ -42,10 +41,12 @@ public class Robot extends IterativeRobot {
 		System.out.println("*WARNING: might not possibly work             *");
 		System.out.println("-----------------TEST-ROBOT--------------------");
 		autonomousCommand = new ryansAutonomousCommand();
-
+		
+		/*
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 		session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 		NIVision.IMAQdxConfigureGrab(session);
+		*/
 
 		oi = new OI();
 		
@@ -100,11 +101,13 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
+		/*
 		NIVision.IMAQdxStartAcquisition(session);
 		NIVision.IMAQdxGrab(session, frame, 1);
 		NIVision.Rect rect = new NIVision.Rect(10, 10, 100, 100);
 		CameraServer.getInstance().setImage(frame);
 		Scheduler.getInstance().run();
+		*/
 	}
 
 	/**

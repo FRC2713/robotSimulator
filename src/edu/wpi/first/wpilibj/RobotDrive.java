@@ -96,4 +96,14 @@ public class RobotDrive {
 		
 	}
 
+	public void arcadeDrive(Joystick joystick1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void arcadeDrive(double move, double rotate) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

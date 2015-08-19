@@ -23,7 +23,7 @@ public class RobotMap {
     public static final int LIFT_MOTOR = 6;
     public static final int GRAB_MOTOR = 7;
     
-    public static final int XBOX_PORT = 2;
+    public static final int XBOX_PORT = 5;
     public static final int JOYSTICK_PORT = 2;
     
     public static final boolean INIT_DRIVE = true;

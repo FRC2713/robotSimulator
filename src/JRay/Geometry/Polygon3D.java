@@ -45,5 +45,13 @@ public class Polygon3D {
 		}
 		myPoly = new ColoredPolygon(myColor, xs, ys);
 	}
+	
+	public void shift(double d, double y, double z) {
+		for(int i = 0; i < myPoints.length; i++) {
+			myPoints[i].xPos += d;
+			myPoints[i].yPos += y;
+			myPoints[i].zPos += z;
+		}
+	}
 
 }

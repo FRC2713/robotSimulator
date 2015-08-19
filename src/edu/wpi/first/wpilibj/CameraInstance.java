@@ -1,10 +1,8 @@
 package edu.wpi.first.wpilibj;
 
-import java.awt.Image;
-
 public class CameraInstance {
 
-	public void setImage(Image stuff) {
+	public void setImage(com.ni.vision.NIVision.Image frame) {
 		
 	}
 	

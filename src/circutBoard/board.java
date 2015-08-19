@@ -1,10 +1,13 @@
 package circutBoard;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 import org.usfirst.frc.team2713.robot.Robot;
 
@@ -14,113 +17,145 @@ import main.Main;
 
 public class board {
 
-	updateThread updater;
+	public updateThread updater;
 	public jaguar[] jags;
 	public limitSwitch[] limitSwitches;
-	public encoder[] encoders;
 	int jaguarNum;
 	int numOfSensors = 0;
 	public Robot robot;
-	boolean limitSwitchPressed = false;
-	int limitSwitchPressedNum;
-	JButton enableTeleop;
-	JButton enableAuto;
-	JButton enableComp;
-	JButton[] disable;
-	public JTextPane[] encoderJagNum;
 	public CommandManager manager = new CommandManager();
 	public EncoderManager encodersManager = new EncoderManager();
-
 
 	public board() {
 		jags = new jaguar[10];
 		limitSwitches = new limitSwitch[10];
-		encoders = new encoder[10];
-		encoderJagNum = new JTextPane[10];
+		addLim1Key(Main.display.display);
+		addLim2Key(Main.display.display);
+		addLim3Key(Main.display.display);
+		addLim4Key(Main.display.display);
+		addLim5Key(Main.display.display);
+		addLim6Key(Main.display.display);
+		addLim7Key(Main.display.display);
+		addLim8Key(Main.display.display);
+		addLim9Key(Main.display.display);
+		addLim10Key(Main.display.display);
 		updater = new updateThread();
 		jaguarNum = 0;
-		enableTeleop = new JButton("Enable Teleop");
-		enableTeleop.setBounds(100, Main.screenHeight - 300, 100, 50);
-		enableTeleop.addActionListener(new listenToEnableDisable(true, false, false));
-		Main.display.add(enableTeleop);
-		enableAuto = new JButton("Enable Autonomous");
-		enableAuto.setBounds(100, Main.screenHeight - 230, 100, 50);
-		enableAuto.addActionListener(new listenToEnableDisable(false, true, false));
-		Main.display.add(enableAuto);
-		enableComp = new JButton("Simulate Competition");
-		enableComp.setBounds(100, Main.screenHeight - 160, 100, 50);
-		enableComp.addActionListener(new listenToEnableDisable(true, true, false));
-		Main.display.add(enableComp);
-		disable = new JButton[3];
-		for(int i = 0; i < disable.length; i++) {
-			disable[i] = new JButton("Disable");
-			disable[i].setBounds(250, Main.screenHeight - (300 - 70*i), 100, 50);
-			disable[i].addActionListener(new listenToEnableDisable(false, false, true));
-			Main.display.add(disable[i]);
-		}
-		updater.start();
 	}
 
 	public void createJaguar(int portNum) {
-		jaguarNum++;
 		jags[portNum] = new jaguar(portNum);
-		if (jaguarNum <= 4) {
-			jags[portNum].setBounds(150 * jaguarNum - 1, 100, 100, 100);
-		} else if (jaguarNum <= 8) {
-			jags[portNum].setBounds(150 * (jaguarNum - 4), 300, 100, 100);
-		} else {
-			jags[portNum].setBounds(150 * (jaguarNum - 5), 500, 100, 100);
-		}
-		add(jags[portNum]);
-		repaint();
-
 	}
 
 	public void createLimitSwitch(int portNum) {
-		numOfSensors++;
-		limitSwitches[portNum] = new limitSwitch(portNum);
-		limitSwitches[portNum].setBounds(800 + 150 * numOfSensors % 2,
-				50 + 100 * numOfSensors / 2, 150, 50);
-		limitSwitches[portNum].addActionListener(new listenToLimitSwitch(
-				portNum));
-		add(limitSwitches[portNum]);
+		limitSwitches[portNum] = new limitSwitch();
 	}
 
-	public void createEncoder(int portNum) {
-		numOfSensors++;
-		encoders[portNum] = new encoder();
-		encoderJagNum[portNum] = new JTextPane();
-		encoders[portNum].setBounds(800 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 15);
-		encoderJagNum[portNum].setBounds(1000 + 150 * numOfSensors % 2, 50 + 100 * numOfSensors / 2, 150, 15);
-		encoders[portNum].reset();
-		add(encoders[portNum]);
-		add(encoderJagNum[portNum]);
-	}
-
-	public void updateItems() {
-		for (int i = 0; i < jags.length; i++) {
-			if (jags[i] != null) {
-				jags[i].repaint();
+	public void addLim1Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_1, 0, false), "1 pressed");
+		jc.getActionMap().put("1 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				System.out.println("Hi");
+				limitSwitches[0].pressed = !limitSwitches[0].pressed;
 			}
-		}
-		this.repaint();
-
+		});
 	}
 
-	public class listenToLimitSwitch implements ActionListener {
+	public void addLim2Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_2, 0, false), "2 pressed");
+		jc.getActionMap().put("2 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[1].pressed = !limitSwitches[1].pressed;
+			}
+		});
+	}
 
-		int portNum;
+	public void addLim3Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_3, 0, false), "3 pressed");
+		jc.getActionMap().put("3 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[2].pressed = !limitSwitches[2].pressed;
+			}
+		});
+	}
 
-		public listenToLimitSwitch(int portNum1) {
-			portNum = portNum1;
-		}
+	public void addLim4Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_4, 0, false), "4 pressed");
+		jc.getActionMap().put("4 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[3].pressed = !limitSwitches[3].pressed;
+			}
+		});
+	}
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			limitSwitches[portNum].pressed = !limitSwitches[portNum].pressed;
-			limitSwitchPressed = true;
-			limitSwitchPressedNum = portNum;
-		}
+	public void addLim5Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_5, 0, false), "5 pressed");
+		jc.getActionMap().put("5 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[4].pressed = !limitSwitches[4].pressed;
+
+			}
+		});
+	}
+
+	public void addLim6Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_6, 0, false), "6 pressed");
+		jc.getActionMap().put("6 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[5].pressed = !limitSwitches[5].pressed;
+
+			}
+		});
+	}
+
+	public void addLim7Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_7, 0, false), "7 pressed");
+		jc.getActionMap().put("7 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[6].pressed = !limitSwitches[6].pressed;
+
+			}
+		});
+	}
+
+	public void addLim8Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_8, 0, false), "8 pressed");
+		jc.getActionMap().put("8 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[7].pressed = !limitSwitches[7].pressed;
+
+			}
+		});
+	}
+
+	public void addLim9Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_9, 0, false), "9 pressed");
+		jc.getActionMap().put("9 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[8].pressed = !limitSwitches[8].pressed;
+
+			}
+		});
+	}
+
+	public void addLim10Key(JComponent jc) {
+		jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_0, 0, false), "0 pressed");
+		jc.getActionMap().put("0 pressed", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				limitSwitches[9].pressed = !limitSwitches[9].pressed;
+
+			}
+		});
 	}
 
 	public class listenToEnableDisable implements ActionListener {
@@ -129,8 +164,7 @@ public class board {
 		boolean auto;
 		boolean disable;
 
-		public listenToEnableDisable(boolean teleop1, boolean auto1,
-				boolean disable1) {
+		public listenToEnableDisable(boolean teleop1, boolean auto1, boolean disable1) {
 			teleop = teleop1;
 			auto = auto1;
 			disable = disable1;
@@ -141,7 +175,7 @@ public class board {
 			if (disable) {
 				robot.setEnabledDisabled(false);
 			} else {
-				if(teleop && auto) {
+				if (teleop && auto) {
 					robot = new Robot();
 					robot.setEnabledDisabled(true);
 					robot.robotInit();
@@ -155,7 +189,7 @@ public class board {
 					robot.robotInit();
 					robot.teleopInit();
 					robot.teleopPeriodic();
-				} else if(auto) {
+				} else if (auto) {
 					robot = new Robot();
 					robot.setEnabledDisabled(true);
 					robot.robotInit();

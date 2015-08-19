@@ -5,9 +5,11 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import org.usfirst.frc.team2713.robot.Robot;
+
 import circutBoard.board;
 import JRay.Display.Display;
-import JRay.Scene.Scene;
+import JRayExtensions.RobotScene;
 
 public class Main { // The class the begins the engine
 					// It also manages and stores the engines objects
@@ -19,11 +21,20 @@ public class Main { // The class the begins the engine
 	public static int sensitivityLower = 1;
 	public static int sensitivityUpper = 10;
 	public static board thisBoard;
+	public static boolean sorting = false;
 
 	public static void main(String[] args) { // The main method, starts the engine
-		// thisBoard = new board();
+		thisBoard = new board();
+		thisBoard.robot = new Robot();
+		thisBoard.robot.setEnabledDisabled(true);
+		thisBoard.robot.robotInit();
+		thisBoard.robot.teleopInit();
+		thisBoard.robot.teleopPeriodic();
+		thisBoard.updater.start();
+		RobotScene myScene = new RobotScene();
+		//Poll User
+		
 		createDisplay();
-		Scene myScene = new Scene();
 		display.addScene(myScene);
 	}
 
@@ -33,10 +44,6 @@ public class Main { // The class the begins the engine
 
 	public static void createLimitSwitch(int portNum) {
 		thisBoard.createLimitSwitch(portNum);
-	}
-
-	public static void createEncoder(int portNum) {
-		thisBoard.createEncoder(portNum);
 	}
 
 	// Make it so camera position is saved in the scene

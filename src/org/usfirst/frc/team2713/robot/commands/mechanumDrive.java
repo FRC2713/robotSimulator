@@ -19,6 +19,7 @@ public class mechanumDrive extends commandBase{
 	}
 	
 	public void execute() {
+		//System.out.println(lift.limitSwitchBottom.get());
 		driverStationNum = prefs.getInt("DriverStationNumber", 2);
 		SCALER = prefs.getDouble("SCALER", 0.6);
 		DEADBAND = prefs.getDouble("DEADBAND",0.1);
