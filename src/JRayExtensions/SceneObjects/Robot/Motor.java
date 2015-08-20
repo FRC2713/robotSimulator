@@ -6,7 +6,7 @@ public class Motor {
 
 	int attachedJaguarID = 0;
 	int attachedEncoderID = -1;
-	double currentMomentum = 0;
+	public double currentMomentum = 0;
 	double distancePerSpin = 1;
 
 	public Motor(double distancePerSpin, int jaguarNum, int encoderNum) {
@@ -17,8 +17,10 @@ public class Motor {
 
 	public void move() {
 		currentMomentum = Main.thisBoard.jags[attachedJaguarID].speed * distancePerSpin;
-		Main.thisBoard.encodersManager.encoders[attachedEncoderID].distanceTraveled += Main.thisBoard.jags[attachedJaguarID].speed
-				* Main.thisBoard.encodersManager.encoders[attachedEncoderID].distancePerPulse;
+		if (attachedEncoderID != -1) {
+			Main.thisBoard.encodersManager.encoders[attachedEncoderID].distanceTraveled += Main.thisBoard.jags[attachedJaguarID].speed
+					* Main.thisBoard.encodersManager.encoders[attachedEncoderID].distancePerPulse;
+		}
 	}
 
 }

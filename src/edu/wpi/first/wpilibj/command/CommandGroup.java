@@ -21,7 +21,6 @@ public class CommandGroup extends Command {
 					commands.get(commandToRun).execute();
 				} else {
 					commandToRun++;
-					System.out.println(commandToRun);
 				}
 			}
 		}

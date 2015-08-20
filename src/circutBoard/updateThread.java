@@ -13,7 +13,7 @@ public class updateThread extends Thread {
 						
 					}
 				}
-				((RobotScene) (Main.display.currentScene)).myRobot.shift(1 * Main.thisBoard.jags[2].speed, 0, 0);
+				((RobotScene) (Main.display.currentScene)).myRobot.myDrive.move();
 			}
 			try {
 				Thread.sleep(50);

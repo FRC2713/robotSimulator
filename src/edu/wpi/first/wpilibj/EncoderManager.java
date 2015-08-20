@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class EncoderManager {
 	
 	public Encoder[] encoders = new Encoder[20];

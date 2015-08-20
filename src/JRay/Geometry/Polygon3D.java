@@ -6,7 +6,7 @@ import main.Main;
 
 public class Polygon3D {
 
-	Point3D[] myPoints;
+	public Point3D[] myPoints;
 	Color myColor;
 	public double distanceFromCamera;
 	public ColoredPolygon myPoly;
@@ -51,6 +51,21 @@ public class Polygon3D {
 			myPoints[i].xPos += d;
 			myPoints[i].yPos += y;
 			myPoints[i].zPos += z;
+		}
+	}
+	
+	public void rotate(double radians, double centerX, double centerY) {
+		for(int i = 0; i < myPoints.length; i++) {
+			double x1 = myPoints[i].xPos - centerX;
+			double y1 = myPoints[i].yPos - centerY;
+
+			//APPLY ROTATION
+			x1 = x1 * Math.cos(radians) - y1 * Math.sin(radians);
+			y1 = x1 * Math.sin(radians) + y1 * Math.cos(radians);
+
+			//TRANSLATE BACK
+			myPoints[i].xPos = (x1) + centerX;
+			myPoints[i].yPos = (y1) + centerY;
 		}
 	}
 

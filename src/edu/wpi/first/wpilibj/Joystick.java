@@ -18,7 +18,7 @@ public class Joystick {
 		portNum = port;
 		thisController = Controllers.ca[port];
 		for(int i = 0; i < Controllers.ca.length; i++) {
-			//System.out.println(Controllers.ca[i]);
+			System.out.println(Controllers.ca[i]);
 		}
 		Controllers.ca[port].poll();
 		for (int i = 0; i < thisController.getComponents().length; i++) {

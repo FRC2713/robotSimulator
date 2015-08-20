@@ -3,6 +3,7 @@ package JRayExtensions;
 import java.util.ArrayList;
 
 
+
 import JRay.Geometry.Polygon3D;
 import JRay.Scene.Scene;
 import JRayExtensions.SceneObjects.Robot.Robot;
@@ -18,7 +19,14 @@ public class RobotScene extends Scene {
 	
 	@Override
 	public ArrayList<Polygon3D> getCurrent() {
-		return myRobot.myPolys;
+		ArrayList<Polygon3D> toReturn = new ArrayList<Polygon3D>();
+		for(int i = 0; i < myRobot.myPolys.size(); i++) {
+			toReturn.add(myRobot.myPolys.get(i));
+		}
+		for(int i = 0; i < myRobot.basePlate.size(); i++) {
+			toReturn.add(myRobot.basePlate.get(i));
+		}
+		return toReturn;
 	}
 	
 	@Override

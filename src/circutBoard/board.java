@@ -17,7 +17,6 @@ import main.Main;
 
 public class board {
 
-	public updateThread updater;
 	public jaguar[] jags;
 	public limitSwitch[] limitSwitches;
 	int jaguarNum;
@@ -39,7 +38,6 @@ public class board {
 		addLim8Key(Main.display.display);
 		addLim9Key(Main.display.display);
 		addLim10Key(Main.display.display);
-		updater = new updateThread();
 		jaguarNum = 0;
 	}
 
@@ -56,7 +54,6 @@ public class board {
 		jc.getActionMap().put("1 pressed", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("Hi");
 				limitSwitches[0].pressed = !limitSwitches[0].pressed;
 			}
 		});

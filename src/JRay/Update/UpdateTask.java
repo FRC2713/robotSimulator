@@ -1,11 +1,6 @@
 package JRay.Update;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-
 import main.Main;
 import JRay.Geometry.Polygon3D;
 import JRay.Thread.Task;
@@ -28,10 +23,10 @@ public class UpdateTask extends Task {
 			myWait = Main.display.displayWait;
 			if (!Main.display.paused && readyToUpdate()) { // Runs once for every time the rasterizers run
 				Main.display.repaint(); // Makes the screen call the paintComponent method
-				Main.sorting = true;
 				Main.display.currentScene.updateDistances();
 				ArrayList<Polygon3D> failBuffer = Main.display.currentScene.getCurrent();
 				ArrayList<Polygon3D> toSort = Main.display.currentScene.getCurrent();
+				/*
 				try {
 					Collections.sort(toSort, new Comparator<Polygon3D>() {
 						@Override
@@ -42,8 +37,8 @@ public class UpdateTask extends Task {
 				} catch (ConcurrentModificationException ex) {
 					toSort = failBuffer;
 				}
+				*/
 				Main.display.currentScene.toRender = toSort;
-				Main.sorting = false;
 				for (int i = 0; i < Main.display.rasterizers.length; i++) { // Tells the rasterizers to start
 					Main.display.rasterizers[i].isDone = false;
 				}
