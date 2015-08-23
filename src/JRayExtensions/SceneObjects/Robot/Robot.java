@@ -1,14 +1,12 @@
 package JRayExtensions.SceneObjects.Robot;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 
-import JRay.Geometry.Point3D;
 import JRay.Geometry.Polygon3D;
 import JRay.ShapeGenerator.ShapeFactory;
-import JRayExtensions.RobotScene;
 import JRayExtensions.SceneObjects.Robot.Drive.BasicDrive;
-import main.Main;
 
 public class Robot {
 

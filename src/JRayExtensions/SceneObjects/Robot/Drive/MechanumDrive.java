@@ -6,11 +6,6 @@ import JRayExtensions.RobotScene;
 
 public class MechanumDrive extends BasicDrive {
 
-	double frontHorizontalMomentum = 0; // Positive is to the right
-	double backHorizontalMomentum = 0; // Positive is to the right
-	double leftVerticalMomentum = 0; // Positive is up;
-	double rightVerticalMomentum = 0; // Positive is up;
-
 	public MechanumDrive() {
 		super();
 	}
@@ -28,12 +23,5 @@ public class MechanumDrive extends BasicDrive {
 		rightVerticalMomentum += super.backRight.currentMomentum;
 		backHorizontalMomentum += super.backRight.currentMomentum;
 		((RobotScene) (Main.display.currentScene)).myRobot.move(leftVerticalMomentum, rightVerticalMomentum, frontHorizontalMomentum, backHorizontalMomentum);
-	}
-
-	public void resetMomentum() {
-		rightVerticalMomentum = 0;
-		leftVerticalMomentum = 0;
-		backHorizontalMomentum = 0;
-		frontHorizontalMomentum = 0;
 	}
 }
