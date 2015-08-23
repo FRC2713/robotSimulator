@@ -3,11 +3,12 @@ package edu.wpi.first.wpilibj;
 public class Preferences {
 
 	public static Preferences getInstance() {
+		//TODO
 		return new Preferences();
 	}
 	
 	public void putDouble(String name, double put) {
-		
+		//TODO
 	}
 
 	public double getDouble(String string, double d) {
@@ -16,6 +17,7 @@ public class Preferences {
 	}
 
 	public int putInt(String string, int i) {
+		//TODO
 		return i;
 	}
 

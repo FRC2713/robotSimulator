@@ -29,6 +29,11 @@ public class Main { // The class the begins the engine
 	public static boolean sorting = false;
 	public static updateThread updater;
 	private static RobotScene myScene;
+	static int frontLeftController = 0;
+	static int frontRightController = 0;
+	static int backLeftController = 0;
+	static int backRightController = 0;
+
 
 	public static void main(String[] args) { // The main method, starts the engine
 		thisBoard = new board();
@@ -77,30 +82,33 @@ public class Main { // The class the begins the engine
 		} else {
 			myScene.myRobot.myDrive = new ArcadeDrive();
 		}
-		String motorJag = JOptionPane.showInputDialog("Enter what port number Speed Controller controls the Front Left Motor.");
 		String motorEncode = JOptionPane.showInputDialog("Enter what port number Encoder is controlled by the Front Left Motor. If none, enter nothing");
 		if(motorEncode.equals("")) {
 			motorEncode = "-1";
 		}
-		myScene.myRobot.myDrive.frontLeft = new Motor(1, Integer.parseInt(motorJag), Integer.parseInt(motorEncode));
-		motorJag = JOptionPane.showInputDialog("Enter what port number Speed Controller controls the Front Right Motor.");
+		myScene.myRobot.myDrive.frontLeft = new Motor(1, frontLeftController, Integer.parseInt(motorEncode));
 		motorEncode = JOptionPane.showInputDialog("Enter what port number Encoder is controlled by the Front Right Motor. If none, enter nothing");
 		if(motorEncode.equals("")) {
 			motorEncode = "-1";
 		}
-		myScene.myRobot.myDrive.frontRight = new Motor(1, Integer.parseInt(motorJag), Integer.parseInt(motorEncode));
-		motorJag = JOptionPane.showInputDialog("Enter what port number Speed Controller controls the Back Left Motor.");
+		myScene.myRobot.myDrive.frontRight = new Motor(1, frontRightController, Integer.parseInt(motorEncode));
 		motorEncode = JOptionPane.showInputDialog("Enter what port number Encoder is controlled by the Back Left Motor. If none, enter nothing");
 		if(motorEncode.equals("")) {
 			motorEncode = "-1";
 		}
-		myScene.myRobot.myDrive.backLeft = new Motor(1, Integer.parseInt(motorJag), Integer.parseInt(motorEncode));
-		motorJag = JOptionPane.showInputDialog("Enter what port number Speed Controller controls the Back Right Motor.");
+		myScene.myRobot.myDrive.backLeft = new Motor(1, backLeftController, Integer.parseInt(motorEncode));
 		motorEncode = JOptionPane.showInputDialog("Enter what port number Encoder is controlled by the Back Right Motor. If none, enter nothing");
 		if(motorEncode.equals("")) {
 			motorEncode = "-1";
 		}
-		myScene.myRobot.myDrive.backRight = new Motor(1, Integer.parseInt(motorJag), Integer.parseInt(motorEncode));
+		myScene.myRobot.myDrive.backRight = new Motor(1, backRightController, Integer.parseInt(motorEncode));
+	}
+	
+	public static void reportDriveInfo(int frontLeft, int frontRight, int backLeft, int backRight) {
+		frontLeftController = frontLeft;
+		frontRightController = frontRight;
+		backLeftController = backLeft;
+		backRightController = backRight;
 	}
 
 }

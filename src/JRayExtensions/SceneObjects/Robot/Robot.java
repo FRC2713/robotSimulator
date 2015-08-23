@@ -56,8 +56,8 @@ public class Robot {
 	}
 
 	public void move(double leftVerticalMomentum, double rightVerticalMomentum, double backHorizontalMomentum, double frontHorizontalMomentum) {
-		shift(-Math.cos(radiansRotated) * (leftVerticalMomentum + rightVerticalMomentum) / 2, -Math.sin(radiansRotated) * (leftVerticalMomentum + rightVerticalMomentum) / 2, 0); // Front Back Movement
-		shift(-Math.sin(radiansRotated) * (backHorizontalMomentum + frontHorizontalMomentum) / 2, -Math.cos(radiansRotated) * (backHorizontalMomentum + frontHorizontalMomentum) / 2, 0); // Right Left
+		shift(Math.cos(radiansRotated) * (leftVerticalMomentum + rightVerticalMomentum) / 2, Math.sin(radiansRotated) * (leftVerticalMomentum + rightVerticalMomentum) / 2, 0); // Front Back Movement
+		shift(-Math.sin(radiansRotated) * (backHorizontalMomentum + frontHorizontalMomentum) / 2, Math.cos(radiansRotated) * (backHorizontalMomentum + frontHorizontalMomentum) / 2, 0); // Right Left
 																																															// Movement
 
 		// Break
