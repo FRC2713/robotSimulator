@@ -8,11 +8,6 @@ public class updateThread extends Thread {
 	public void run() {
 		while (true) {
 			if (!Main.sorting) {
-				for (int i = 0; i < Main.thisBoard.jags.length; i++) {
-					if (Main.thisBoard.jags[i] != null) {
-						
-					}
-				}
 				((RobotScene) (Main.display.currentScene)).myRobot.myDrive.move();
 			}
 			try {

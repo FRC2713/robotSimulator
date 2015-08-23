@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj;
 
+import main.Main;
 
 public class RobotDrive {
 
@@ -64,7 +65,6 @@ public class RobotDrive {
 		frontRight.set(wheelSpeeds[MotorType.kFrontRight_val - 1]);
 		backLeft.set(wheelSpeeds[MotorType.kRearLeft_val - 1]);
 		backRight.set(wheelSpeeds[MotorType.kRearRight_val - 1]);
-
 	}
 
 	protected static void normalize(double wheelSpeeds[]) {

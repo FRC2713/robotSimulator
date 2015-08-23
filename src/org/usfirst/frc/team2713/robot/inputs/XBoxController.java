@@ -25,7 +25,7 @@ public class XBoxController extends Joystick {
     }
 
     public double getRightX() {
-        return getRawAxis(4);
+        return -getZ();
     }
 
     public double getRightY() {

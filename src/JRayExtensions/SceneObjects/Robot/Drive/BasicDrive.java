@@ -9,11 +9,6 @@ public class BasicDrive {
 	public Motor backLeft = new Motor(5, 4, -1);
 	public Motor backRight = new Motor(5, 5, -1);
 	
-	double frontMomentum;
-	double leftMomentum;
-	double rightMomentum;
-	double backMomentum;
-	
 	public BasicDrive() {
 		
 	}
@@ -24,11 +19,6 @@ public class BasicDrive {
 		frontRight.move();
 		backLeft.move();
 		backRight.move();
-		frontMomentum = frontLeft.currentMomentum + frontRight.currentMomentum;
-		backMomentum = backLeft.currentMomentum + backRight.currentMomentum;
-		rightMomentum = frontRight.currentMomentum + backRight.currentMomentum;
-		leftMomentum = frontLeft.currentMomentum + backLeft.currentMomentum;
-
 	}
 	
 }
