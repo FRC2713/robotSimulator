@@ -1,13 +1,11 @@
 package JRayExtensions;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 
 
 import JRay.Geometry.Polygon3D;
 import JRay.Scene.Scene;
-import JRay.ShapeGenerator.ShapeFactory;
 import JRayExtensions.SceneObjects.Robot.Robot;
 
 public class RobotScene extends Scene {
@@ -17,7 +15,6 @@ public class RobotScene extends Scene {
 	public RobotScene() {
 		super();
 		myRobot = new Robot();
-		addArray(ShapeFactory.generateCube(-100, 3000, 0, 100, new Color(0, 255, 0)));
 	}
 	
 	@Override

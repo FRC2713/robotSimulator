@@ -60,8 +60,9 @@ public class Polygon3D {
 			double y1 = myPoints[i].yPos - centerY;
 
 			//APPLY ROTATION
-			x1 = x1 * Math.cos(radians) - y1 * Math.sin(radians);
+			double temp = x1 * Math.cos(radians) - y1 * Math.sin(radians);
 			y1 = x1 * Math.sin(radians) + y1 * Math.cos(radians);
+			x1 = temp;
 
 			//TRANSLATE BACK
 			myPoints[i].xPos = (x1) + centerX;
