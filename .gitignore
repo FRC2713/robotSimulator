@@ -1,1 +1,7 @@
 /bin/
+/archive/
+/.classpath
+/.DS_Store
+/.gitignore
+/.project
+/.settings/
