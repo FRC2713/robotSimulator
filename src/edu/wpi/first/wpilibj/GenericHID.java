@@ -46,6 +46,7 @@ public class GenericHID {
 	public double getX() {
 		if (Main.thisBoard.robot.enabled) {
 			Controllers.ca[portNum].poll();
+			System.out.println(thisController.getComponents()[zPortNum].getPollData());
 			return calcDeadban(
 					thisController.getComponents()[xPortNum].getPollData(), .1);
 		}

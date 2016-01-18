@@ -14,7 +14,7 @@ public class CommandGroup extends Command {
 	}
 	
 	
-	public void execute() {
+	protected void execute() {
 		if(!isFinished) {
 			if(commands.size() > commandToRun) {
 				if(!commands.get(commandToRun).isFinished()) {

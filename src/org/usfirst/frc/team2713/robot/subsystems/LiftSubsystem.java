@@ -1,10 +1,14 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
+
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 import org.usfirst.frc.team2713.robot.UniversalController;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class LiftSubsystem extends Subsystem {
 
@@ -25,18 +29,21 @@ public class LiftSubsystem extends Subsystem {
 	public boolean toBeReleased = false;
 	public boolean pidStarted = false;
 	public boolean stopPID = false;
+	SubsystemStorage base;
 
-	public LiftSubsystem() {
+	public LiftSubsystem(SubsystemStorage base) {
+		this.base = base;
 		totesLocation = new double[6];
 		if (RobotMap.INIT_LIFT) {
-			arm = new UniversalController(RobotMap.LIFT_MOTOR);
+			arm = new UniversalController(RobotMap.LIFT_MOTOR, false);
 			thisEncoder = new Encoder(RobotMap.LIFT_ENCODER_A_CHANNEL, RobotMap.LIFT_ENCODER_B_CHANNEL);
-			thisEncoder.setDistancePerPulse(distancePerPulse * 1);
-			thisEncoder.reset();
+			thisEncoder.setDistancePerPulse(distancePerPulse * -1);
+			thisEncoder.setReverseDirection(true);
+			thisEncoder.reset();	
 			limitSwitchBottom = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_LIFT);
 			limitSwitchTop = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_LIFT);
 			for (int i = 0; i < 6; i++) {
-				totesLocation[i] = toteHeight * i;
+				totesLocation[i] = toteHeight * i * 2;
 			}
 		}
 	}

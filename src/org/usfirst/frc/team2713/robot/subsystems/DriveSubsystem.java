@@ -1,13 +1,15 @@
 package org.usfirst.frc.team2713.robot.subsystems;
 
-import org.usfirst.frc.team2713.robot.commands.mechanumDrive;
-
+import org.usfirst.frc.team2713.robot.commands.MechanumDrive;
 import org.usfirst.frc.team2713.robot.RobotMap;
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 import org.usfirst.frc.team2713.robot.UniversalController;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem {
@@ -18,18 +20,20 @@ public class DriveSubsystem extends Subsystem {
 	UniversalController rightBack;
 	UniversalController rightFront;
 	public Encoder thisEncoder;
+	SubsystemStorage base;
 
-	public DriveSubsystem() {
+	public DriveSubsystem(SubsystemStorage base) {
+		this.base = base;
 		if (RobotMap.INIT_DRIVE) {
-			leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK);
-			leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT);
-			rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK);
-			rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT);
-			roboDrive = new RobotDrive(leftFront.getProperController(), rightFront.getProperController(), leftBack.getProperController(), rightBack.getProperController());
-			//roboDrive.setInvertedMotor(MotorType.kFrontLeft, true); // invert the left side motors
-			//roboDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need to change or remove this to match your robot
-			//roboDrive.setInvertedMotor(MotorType.kFrontRight, false);
-			//roboDrive.setInvertedMotor(MotorType.kRearRight, false);
+			leftBack = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_BACK, false);
+			leftFront = new UniversalController(RobotMap.LEFT_DRIVE_MOTOR_FRONT, true);
+			rightBack = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_BACK, false);
+			rightFront = new UniversalController(RobotMap.RIGHT_DRIVE_MOTOR_FRONT, true);
+			roboDrive = new RobotDrive(rightFront.getProperController(), rightBack.getProperController(), leftFront.getProperController(), leftBack.getProperController());
+			roboDrive.setInvertedMotor(MotorType.kFrontLeft, false); // invert the left side motors
+			roboDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need to change or remove this to match your robot
+			roboDrive.setInvertedMotor(MotorType.kFrontRight, true);
+			roboDrive.setInvertedMotor(MotorType.kRearRight, false);
 			roboDrive.setExpiration(0.1);
 			roboDrive.setSafetyEnabled(false);
 			thisEncoder = new Encoder(RobotMap.DRIVE_ENCODER_A_CHANNEL, RobotMap.DRIVE_ENCODER_B_CHANNEL);
@@ -39,7 +43,7 @@ public class DriveSubsystem extends Subsystem {
 
 	public void startCommand() {
 		if (RobotMap.INIT_DRIVE) {
-			new mechanumDrive().start();
+			 new MechanumDrive(base).start();
 		}
 	}
 
@@ -93,9 +97,9 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void move(double speed) {
-		rightFront.getProperController().set(-speed);
+		rightFront.getProperController().set(speed);
 		rightBack.getProperController().set(-speed);
-		leftFront.getProperController().set(speed);
+		leftFront.getProperController().set(-speed);
 		leftBack.getProperController().set(speed);
 	}
 

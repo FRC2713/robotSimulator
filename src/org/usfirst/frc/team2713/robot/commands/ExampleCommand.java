@@ -20,11 +20,11 @@ public class ExampleCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    public void execute() {
+    protected void execute() {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    public boolean isFinished() {
+    protected boolean isFinished() {
         return false;
     }
 
@@ -35,6 +35,5 @@ public class ExampleCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
     }
 }

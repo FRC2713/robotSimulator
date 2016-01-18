@@ -1,10 +1,16 @@
 package org.usfirst.frc.team2713.robot;
 
+import org.usfirst.frc.team2713.robot.inputs.JoystickController;
 import org.usfirst.frc.team2713.robot.inputs.XBoxController;
 
 
-import org.usfirst.frc.team2713.robot.commands.changeLevel;
-import edu.wpi.first.wpilibj.Joystick;
+
+
+import org.usfirst.frc.team2713.robot.commands.ChangeDriveSpeed;
+import org.usfirst.frc.team2713.robot.commands.ChangeLevel;
+import org.usfirst.frc.team2713.robot.commands.MakeDriveCoast;
+
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -18,44 +24,29 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	
-	public static Joystick joystick;
 	public static XBoxController xbox;
+	public static JoystickController stick;
 	private JoystickButton liftUp;
 	private JoystickButton liftDown;
-	
-	
+	private JoystickButton changeDriveSpeed;
+	private JoystickButton changeDriveCoast;
 
-	public OI() {
-		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+	public OI(SubsystemStorage base) {
 		xbox = new XBoxController(RobotMap.XBOX_PORT);
-		joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 		if (RobotMap.INIT_LIFT) {
 			
-			liftUp = new JoystickButton(xbox, 4);
-			liftUp.whileHeld(new changeLevel(true));
-			liftUp.whenReleased(new changeLevel(null));
-			liftDown = new JoystickButton(xbox, 1);
-			liftDown.whileHeld(new changeLevel(false));
-			liftDown.whenReleased(new changeLevel(null));
+			// XBox Buttons
+			assignButtons(base, true);
 			
-			//liftUp2 = new JoystickButton(joystick, 8);
-			//liftUp2.whileHeld(new changeLevel(true));
-			//liftUp2.whenReleased(new changeLevel(null));
-			//liftDown2 = new JoystickButton(joystick, 7);
-			//liftDown2.whileHeld(new changeLevel(false));
-			//liftDown2.whenReleased(new changeLevel(null));
-			
-			//grabOpen = new JoystickButton(joystick,1);
-			//grabOpen.whileHeld(new closeOrOpenGrabber(1));
-			//grabOpen.whenReleased(new closeOrOpenGrabber(0));
-			//grabClose = new JoystickButton(joystick,2);
-			//grabClose.whileHeld(new closeOrOpenGrabber(-1));
-			//grabClose.whenReleased(new closeOrOpenGrabber(0));
-			
-			
+			// Stick Buttons
+			assignButtons(base, false);
 			
 		}
-
+		
+		changeDriveSpeed = new JoystickButton(xbox, 3);
+		changeDriveSpeed.whenPressed(new ChangeDriveSpeed());
+		changeDriveCoast = new JoystickButton(xbox, 2);
+		changeDriveCoast.whenPressed(new MakeDriveCoast());
 	}
 
 	public XBoxController getXbox() {
@@ -63,10 +54,31 @@ public class OI {
 		return xbox;
 	}
 	
-	public Joystick joystick(){
-		
-		return joystick;
+	public JoystickController getStick(){
+		return stick;
 	}
+	
+	private void assignButtons(SubsystemStorage base, boolean useXbox) {
+		GenericHID controller;
+		int liftUpPort;
+		int liftDownPort;
+		if (useXbox){
+			controller = xbox;
+			liftUpPort = 4;
+			liftDownPort = 1;
+		} else {
+			controller = stick;
+			liftUpPort = 3;
+			liftDownPort = 2;
+		}
+		liftUp = new JoystickButton(controller, liftUpPort);
+		liftUp.whileHeld(new ChangeLevel(true, base));
+		liftUp.whenReleased(new ChangeLevel(null, base));
+		liftDown = new JoystickButton(controller, liftDownPort);
+		liftDown.whileHeld(new ChangeLevel(false, base));
+		liftDown.whenReleased(new ChangeLevel(null, base));
+	}
+	
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

@@ -2,24 +2,27 @@ package org.usfirst.frc.team2713.robot.subsystems;
 
 import org.usfirst.frc.team2713.robot.RobotMap;
 
+import org.usfirst.frc.team2713.robot.SubsystemStorage;
 import org.usfirst.frc.team2713.robot.UniversalController;
-import org.usfirst.frc.team2713.robot.commands.moveGrabber;
+import org.usfirst.frc.team2713.robot.commands.MoveGrabber;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GrabberSubsystem extends Subsystem {
 
 	public UniversalController grab;
-	moveGrabber graberCommand;
+	MoveGrabber graberCommand;
 	public DigitalInput armClosed;
 	public DigitalInput armClosed2;
+	SubsystemStorage base;
 
-	public GrabberSubsystem() {
+	public GrabberSubsystem(SubsystemStorage base) {
+		this.base = base;
 		if (RobotMap.INIT_GRAB) {
-			grab = new UniversalController(RobotMap.GRAB_MOTOR);
+			grab = new UniversalController(RobotMap.GRAB_MOTOR, false);
 			if (armClosed == null) {
 				armClosed = new DigitalInput(RobotMap.ARM_LIMIT_SWITCH_NUM);
 			}
@@ -31,7 +34,7 @@ public class GrabberSubsystem extends Subsystem {
 
 	public void startCommand() {
 		if (RobotMap.INIT_GRAB) {
-			new moveGrabber().start();
+			new MoveGrabber(base).start();
 		}
 	}
 
@@ -48,7 +51,7 @@ public class GrabberSubsystem extends Subsystem {
 	}
 
 	public double getRaw() {
-		return ((Talon) grab.getProperController()).getRAW();
+		return ((CANTalon) grab.getProperController()).getRaw();
 	}
 
 }

@@ -2,6 +2,8 @@ package edu.wpi.first.wpilibj;
 
 import org.iraiders.robotSimulator.Main.Main;
 
+import edu.wpi.first.wpilibj.can.CANMessageNotFoundException;
+
 public class RobotDrive {
 
 	CANJaguar m_frontLeftMotor;
@@ -20,10 +22,15 @@ public class RobotDrive {
 	}
 
 	public RobotDrive(int frontLeftPort, int frontRightPort, int backLeftPort, int backRightPort) {
+		try {
 		m_frontLeftMotor = new CANJaguar(frontLeftPort);
-		m_frontRightMotor = new CANJaguar(frontRightPort);
+			m_frontRightMotor = new CANJaguar(frontRightPort);
 		m_rearLeftMotor = new CANJaguar(backLeftPort);
 		m_rearRightMotor = new CANJaguar(backRightPort);
+		} catch (CANMessageNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Main.reportDriveInfo(m_frontLeftMotor.portNum, m_frontRightMotor.portNum, m_rearLeftMotor.portNum, m_rearRightMotor.portNum);
 	}
 

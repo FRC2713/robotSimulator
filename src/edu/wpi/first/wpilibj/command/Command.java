@@ -10,11 +10,11 @@ public class Command {
 
 	}
 
-	public boolean isFinished() {
+	protected boolean isFinished() {
 		return false;
 	}
 
-	public void execute() {
+	protected void execute() {
 
 	}
 
@@ -36,6 +36,24 @@ public class Command {
 
 	protected void requires(Subsystem stuff) {
 
+	}
+
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void runExecute() {
+		this.execute();
+	}
+	
+	public boolean checkIsFinished() {
+		return this.isFinished();
 	}
 
 }

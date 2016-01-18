@@ -27,7 +27,7 @@ public class board {
 
 	public board() {
 		jags = new jaguar[10];
-		limitSwitches = new limitSwitch[10];
+		limitSwitches = new limitSwitch[20];
 		addLim1Key(Main.display.display);
 		addLim2Key(Main.display.display);
 		addLim3Key(Main.display.display);

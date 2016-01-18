@@ -29,5 +29,17 @@ public class Encoder {
 		Main.thisBoard.encodersManager.encoders[portNum].distanceTraveled = 0;
 	}
 
+	public void setReverseDirection(boolean b) {
+		if(b) {
+			if(distancePerPulse > 0) {
+				distancePerPulse *= -1;
+			}
+		} else {
+			if(distancePerPulse < 0) {
+				distancePerPulse *= -1;
+			}
+		}
+	}
+
 	
 }

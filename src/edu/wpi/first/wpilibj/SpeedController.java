@@ -2,11 +2,14 @@ package edu.wpi.first.wpilibj;
 
 import org.iraiders.robotSimulator.Main.Main;
 
+import edu.wpi.first.wpilibj.can.CANMessageNotFoundException;
+
 public class SpeedController {
 
 	int portNum;
 	int multiplier = 1;
-
+	double speed = 0;
+	
 	public SpeedController(int portNum1) {
 		portNum = portNum1;
 		Main.createJaguar(portNum1);
@@ -14,6 +17,7 @@ public class SpeedController {
 
 	public void set(double speed) {
 		if (Main.thisBoard.robot.enabled) {
+			this.speed = speed * multiplier;
 			Main.thisBoard.jags[portNum].setSpeed(multiplier * speed);
 		}
 	}
@@ -24,5 +28,9 @@ public class SpeedController {
 		} else {
 			multiplier = 1;
 		}
+	}
+
+	public double get() {
+		return speed;
 	}
 }
