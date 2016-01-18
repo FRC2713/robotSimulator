@@ -1,4 +1,4 @@
-package circutBoard;
+package org.iraiders.robotSimulator.circutBoard;
 
 public class jaguar {
 

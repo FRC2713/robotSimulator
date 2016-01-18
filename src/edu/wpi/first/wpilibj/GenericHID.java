@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj;
 
-import main.Main;
+import org.iraiders.robotSimulator.Main.Main;
+
 import net.java.games.input.Controller;
 
 public class GenericHID {

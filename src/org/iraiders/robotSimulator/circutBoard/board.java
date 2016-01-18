@@ -1,4 +1,4 @@
-package circutBoard;
+package org.iraiders.robotSimulator.circutBoard;
 
 import java.awt.event.ActionEvent;
 
@@ -9,11 +9,11 @@ import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
+import org.iraiders.robotSimulator.Main.Main;
 import org.usfirst.frc.team2713.robot.Robot;
 
 import edu.wpi.first.wpilibj.EncoderManager;
 import edu.wpi.first.wpilibj.command.CommandManager;
-import main.Main;
 
 public class board {
 

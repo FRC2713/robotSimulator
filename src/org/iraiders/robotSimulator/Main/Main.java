@@ -1,20 +1,23 @@
-package main;
+package org.iraiders.robotSimulator.Main;
 
 import java.awt.GraphicsEnvironment;
+
+
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import org.iraiders.robotSimulator.JRayExtensions.RobotScene;
+import org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Motor;
+import org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Drive.ArcadeDrive;
+import org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Drive.MechanumDrive;
+import org.iraiders.robotSimulator.circutBoard.board;
+import org.iraiders.robotSimulator.circutBoard.updateThread;
 import org.usfirst.frc.team2713.robot.Robot;
 
-import circutBoard.board;
-import circutBoard.updateThread;
-import JRay.Display.Display;
-import JRayExtensions.RobotScene;
-import JRayExtensions.SceneObjects.Robot.Motor;
-import JRayExtensions.SceneObjects.Robot.Drive.ArcadeDrive;
-import JRayExtensions.SceneObjects.Robot.Drive.MechanumDrive;
+import com.ryanb3.TaskManager.TaskManager;
+import com.ryanb3.JRay.Display.Display;
 
 public class Main { // The class the begins the engine
 					// It also manages and stores the engines objects
@@ -22,7 +25,7 @@ public class Main { // The class the begins the engine
 	// Make it so camera position is saved in the scene
 	public static int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 	public static int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-	public static Display display = new Display();
+	public static Display display; //= new Display(new TaskManager(), screenWidth, screenHeight);
 	public static int sensitivityLower = 1;
 	public static int sensitivityUpper = 10;
 	public static board thisBoard;
@@ -36,13 +39,13 @@ public class Main { // The class the begins the engine
 
 
 	public static void main(String[] args) { // The main method, starts the engine
+		createDisplay();
 		thisBoard = new board();
 		thisBoard.robot = new Robot();
 		thisBoard.robot.setEnabledDisabled(true);
 		thisBoard.robot.robotInit();
-		myScene = new RobotScene();
+		myScene = new RobotScene(display);
 		pollUser();
-		createDisplay();
 		display.addScene(myScene);
 		updater = new updateThread();
 		thisBoard.robot.teleopInit();
@@ -61,7 +64,7 @@ public class Main { // The class the begins the engine
 	// Make it so camera position is saved in the scene
 
 	public static void createDisplay() { // Inits and Makes the JFrame visible
-		display = new Display();
+		display = new Display(new TaskManager(), screenWidth, screenHeight);
 		display.pack();
 		display.setBounds(0, 0, (int) (GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getWidth()), (int) (GraphicsEnvironment.getLocalGraphicsEnvironment()
 				.getMaximumWindowBounds().getHeight()));

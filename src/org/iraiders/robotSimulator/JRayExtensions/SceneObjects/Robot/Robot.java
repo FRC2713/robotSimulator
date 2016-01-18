@@ -1,12 +1,16 @@
-package JRayExtensions.SceneObjects.Robot;
+package org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot;
 
 import java.awt.Color;
 
+
+
 import java.util.ArrayList;
 
-import JRay.Geometry.Polygon3D;
-import JRay.ShapeGenerator.ShapeFactory;
-import JRayExtensions.SceneObjects.Robot.Drive.BasicDrive;
+import org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Drive.BasicDrive;
+
+import com.ryanb3.JRay.Display.Display;
+import com.ryanb3.JRay.Geometry.Polygon3D;
+import com.ryanb3.JRay.ShapeGenerator.ShapeFactory;
 
 public class Robot {
 
@@ -18,8 +22,9 @@ public class Robot {
 	public Motor grabberMotor;
 	public double radiansRotated = 0;
 
-	public Robot() {
-		basePlate = addArray(ShapeFactory.generateCube(-100, 1000, 0, 100, new Color(255, 0, 0)), basePlate);
+	public Robot(Display display) {
+		ShapeFactory factory = new ShapeFactory(display);
+		basePlate = addArray(factory.generateCube(-100, 1000, 0, 100, new Color(255, 0, 0)), basePlate);
 	}
 
 	public ArrayList<Polygon3D> addArray(Polygon3D[] toAdd, ArrayList<Polygon3D> toAddTo) { // A method to add an array of polygons to current
@@ -87,12 +92,11 @@ public class Robot {
 		}
 
 		// Break
-
+		//basePlate.get(2)
 		double basePlateHalfLength = Math.abs(basePlate.get(2).myPoints[0].xPos - basePlate.get(2).myPoints[2].xPos) / 2;
 		double centerX = (basePlate.get(2).myPoints[0].xPos + basePlate.get(2).myPoints[2].xPos) / 2 + basePlateHalfLength * percentXShift;
 		double centerY = (basePlate.get(2).myPoints[0].yPos + basePlate.get(2).myPoints[2].yPos) / 2 + basePlateHalfLength * percentYShift;
 		rotate(toRotate, centerX, centerY); //Rotation from vertical momentum
-
 	}
 
 }

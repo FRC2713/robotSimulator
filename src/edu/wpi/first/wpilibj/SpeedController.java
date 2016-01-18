@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj;
 
-import main.Main;
+import org.iraiders.robotSimulator.Main.Main;
 
 public class SpeedController {
 

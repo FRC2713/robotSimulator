@@ -1,7 +1,7 @@
-package circutBoard;
+package org.iraiders.robotSimulator.circutBoard;
 
-import main.Main;
-import JRayExtensions.RobotScene;
+import org.iraiders.robotSimulator.JRayExtensions.RobotScene;
+import org.iraiders.robotSimulator.Main.Main;
 
 public class updateThread extends Thread {
 

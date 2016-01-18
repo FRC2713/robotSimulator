@@ -1,8 +1,9 @@
 package edu.wpi.first.wpilibj.buttons;
 
+import org.iraiders.robotSimulator.Main.Main;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import main.Main;
 
 public class JoystickButton extends Thread {
 

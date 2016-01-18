@@ -1,8 +1,7 @@
-package JRayExtensions.SceneObjects.Robot.Drive;
+package org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Drive;
 
-import main.Main;
-
-import JRayExtensions.RobotScene;
+import org.iraiders.robotSimulator.JRayExtensions.RobotScene;
+import org.iraiders.robotSimulator.Main.Main;
 
 public class MechanumDrive extends BasicDrive {
 

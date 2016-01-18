@@ -2,7 +2,7 @@ package edu.wpi.first.wpilibj.command;
 
 import java.util.ArrayList;
 
-import main.Main;
+import org.iraiders.robotSimulator.Main.Main;
 
 
 public class CommandManager extends Thread {

@@ -1,6 +1,6 @@
-package JRayExtensions.SceneObjects.Robot.Drive;
+package org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Drive;
 
-import JRayExtensions.SceneObjects.Robot.Motor;
+import org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Motor;
 
 public class BasicDrive {
 

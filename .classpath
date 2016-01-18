@@ -8,5 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="archive/webstart/dist/jinput-test.jar"/>
 	<classpathentry kind="lib" path="archive/webstart/dist/jinput.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ryan/Documents/TaskManagerv0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ryan/Documents/JRayV0.3.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,6 +1,6 @@
-package JRayExtensions.SceneObjects.Robot;
+package org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot;
 
-import main.Main;
+import org.iraiders.robotSimulator.Main.Main;
 
 public class Motor {
 

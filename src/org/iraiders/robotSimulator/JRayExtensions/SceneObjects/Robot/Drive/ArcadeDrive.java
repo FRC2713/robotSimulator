@@ -1,7 +1,7 @@
-package JRayExtensions.SceneObjects.Robot.Drive;
+package org.iraiders.robotSimulator.JRayExtensions.SceneObjects.Robot.Drive;
 
-import JRayExtensions.RobotScene;
-import main.Main;
+import org.iraiders.robotSimulator.JRayExtensions.RobotScene;
+import org.iraiders.robotSimulator.Main.Main;
 
 public class ArcadeDrive extends BasicDrive {
 
